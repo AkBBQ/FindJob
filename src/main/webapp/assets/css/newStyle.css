@@ -1,0 +1,331 @@
+.common-tab-box ul.cur {
+  display: block;
+}
+.common-tab-box ul {
+    font-weight: 400;
+    display: none;
+    width: 110%;
+    overflow: hidden;
+}
+.job-tab-box li .sub-li {
+    display: block;
+    height: 130px;
+}
+.job-tab-box li p {
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+    color: #61687c;
+    width: 244px;
+    padding-right: 100px;
+    margin: 0 auto 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    padding-left: 10px;
+}
+.job-tab-box li .salary {
+    color: #fc6c38;
+    position: absolute;
+    right: 30px;
+    top: 0;
+}
+.job-tab-box li a.job-info p.job-text {
+    font-size: 12px;
+    color: #61687c;
+    border-bottom: dashed 1px #e3e7ed;
+    width: 344px;
+    padding-right: 0;
+    line-height: 28px;
+}
+.vline {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    vertical-align: middle;
+    background: #e0e0e0;
+    margin: 0 10px;
+}
+.job-tab-box .user-info p {
+    font-size: 14px;
+    width: 344px;
+    padding-right: 0;
+}
+.job-tab-box .user-info img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.job-tab-box .user-info .user-text {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #8d92a1;
+}
+.job-tab-box .user-info .user-text {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #8d92a1;
+}
+.job-tab-box ul li {
+    height: 130px;
+    float: left;
+    margin: 0 16px 16px 0;
+    background: #fff;
+    border-radius: 5px;
+}
+li, ol, ul {
+    list-style: none;
+}
+.common-tab-box ul, ::after, ::before {
+    box-sizing: initial !important;
+}
+.job-tab-box a.user-info {
+    padding:11px 0;
+}
+.job-tab-box li a {
+    display: block;
+}
+.common-tab-box ul li p, ::after, ::before {
+     box-sizing: initial;
+}
+.common-tab-more .btn {
+    width: 382px;
+    font-size: 15px;
+    height: 32px;
+    line-height: 32px;
+    background: #f6f6f8;
+}
+.btn-outline {
+    background: #fff;
+    color: #5dd5c8;
+}
+.btn {
+    display: inline-block;
+    min-width: 112px;
+    box-sizing: content-box;
+    height: 36px;
+    line-height: 36px;
+    border: 1px #5dd5c8 solid;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #5dd5c8;
+    text-align: center;
+    cursor: pointer;
+}
+.common-tab-more {
+    text-align: center;
+    margin-top: 4px;
+}
+.common-tab-box {
+    clear: both;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.common-tab-box ul.cur {
+    display: block;
+}
+.common-tab-box ul {
+    font-weight: 400;
+    display: none;
+    width: 110%;
+    overflow: hidden;
+}
+.company-tab-box ul li {
+    height: 140px;
+    float: left;
+    margin: 0 16px 16px 0;
+    background: #fff;
+}
+.company-tab-box li .conpany-text {
+    margin-left: 65px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.company-tab-box li .conpany-text h4 {
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.company-tab-box li .company-info img {
+    height: 55px;
+    width: 55px;
+    float: left;
+    border-radius: 10px;
+    border: solid 1px #f2f5fa;
+}
+.company-tab-box li .conpany-text p {
+    height: 40px;
+    line-height: 41px;
+    color: #898e9d;
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.company-tab-box li .pull-right {
+    text-align: right;
+    float: right;
+}
+.company-tab-box li .about-info p {
+    width: 240px;
+    margin: 0 auto;
+    font-size: 10px;
+}
+.text-blue {
+    color: #00c2b3;
+}
+.company-tab-box ul li {
+    height: 140px;
+    float: left;
+    margin: 0 16px 16px 0;
+    background: #fff;
+}
+
+.company-tab-box li .sub-li {
+    display: block;
+    height: 140px;
+    padding: 15px 6px 6px 6px;
+    border-radius: 5px;
+}
+.common-tab-box h3 span {
+    float: left;
+    display: inline-block;
+    margin-right: 40px;
+    line-height: 45px;
+    color: #8d92a1;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+
+}
+.company-tab-box li a {
+    color: #8D92A1;
+    display: block;
+}
+.job-list {
+    background: #fff;
+    margin-top:30px;
+}
+.job-primary {
+    height: 48px;
+    color: #4a4160;
+    padding: 20px 0 19px;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+.job-list li {
+    height: 88px;
+    cursor: pointer;
+}
+.search-job-list-wrap .job-list li .name .job-title {
+    max-width: 174px;
+}
+.job-list li .name .job-title {
+    font-size: 16px;
+    color: #00c2b3;
+    font-weight: 400;
+    max-width: 170px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.job-list li .name span.red {
+    height: 26px;
+    display: inline-block;
+    line-height: 26px;
+    position: relative;
+    vertical-align: middle;
+}
+.job-list li .name .red {
+    padding-left: 8px;
+}
+.red {
+    color: #fc703e !important;
+}
+.job-list li .name {
+    font-size: 16px;
+    font-weight: 400;
+    height: 26px;
+    line-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.job-list li p {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #9fa3b0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.job-list li .info-primary p {
+    margin-top: 2px;
+}
+.company-text {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+.job-primary .info-publis h3 {
+    font-size: 13px;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}
+.job-primary .info-publis img {
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    vertical-align: middle;
+    margin: -3px 10px 0 0;
+}
+.job-primary .info-publis {
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 175px;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.job-primary .info-company, .job-primary .info-primary {
+    float: left;
+    color: #4a4160;
+}
+.search-job-list-wrap .job-primary .info-primary {
+    width: 284px;
+    margin-right: 40px;
+}
+a {
+    text-decoration: none;
+    color: #414a60;
+}
+.job-primary {
+    height: 48px;
+    color: #4a4160;
+    padding: 20px 0 19px;
+    margin: 0 30px;
+    border-bottom: 1px #f2f2f5 solid;
+    position: relative;
+}
+.job-list-area , ::after, ::before{
+    box-sizing:content-box;
+}
+.search-job-list-wrap .job-primary .info-primary {
+    width: 284px;
+    margin-right: 40px;
+}
+.job-primary .info-primary {
+    width: 290px;
+}
