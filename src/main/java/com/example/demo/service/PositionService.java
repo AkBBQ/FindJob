@@ -5,8 +5,16 @@ import com.example.demo.entity.dto.PositionDTO;
 
 import java.util.List;
 
+
+/**
+ * 职位服务
+ */
 public interface PositionService {
 
+    /**
+     * 最热职业
+     * @return
+     */
     List<PositionDTO> FindTopPosition();
 
     int getPageCount(String query);
