@@ -24,6 +24,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 用户Controller
+ * @author xxx
+ */
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -114,6 +119,9 @@ public class UserController {
     }
 
 
+    /**
+     * 更新用户信息
+     */
     @RequestMapping("/editUser")
     public String editUser(HttpServletRequest request, MultipartFile userPhoto1, User user,HttpSession session,MultipartFile resumePhoto1,Resume resume) throws  IOException {
         User user1 = (User)session.getAttribute("user");

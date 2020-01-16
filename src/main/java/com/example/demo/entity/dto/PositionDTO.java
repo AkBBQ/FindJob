@@ -1,10 +1,8 @@
 package com.example.demo.entity.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class PositionDTO {
 
     private Integer positionId;

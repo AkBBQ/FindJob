@@ -1,10 +1,8 @@
 package com.example.demo.entity.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class UserDTO {
     private String userName;
 
@@ -16,7 +14,10 @@ public class UserDTO {
 
     private String userEdu;
 
-    private int userState;//1.离职-随时到岗  2.在职-考虑机会
+    /**
+     * 1.离职-随时到岗  2.在职-考虑机会
+     */
+    private int userState;
 
     private String userSex;
 

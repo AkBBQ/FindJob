@@ -102,6 +102,9 @@ public class BackUserController {
         return JSONArray.toJSONString(maps);
     }
 
+    /**
+     * 用户列表
+     */
     @RequestMapping("/userList")
     public String getCompanyList(String userName, Model model, String currentPage, HttpServletRequest request){
         String condition=" 1=1 ";
