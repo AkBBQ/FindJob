@@ -69,6 +69,7 @@ public class ResumeSqlBuilder {
                 SET("personalPoint=#{entity.personalPoint},desirePosition=#{entity.desirePosition}," +
                         "workExperience=#{entity.workExperience},projectExp=#{entity.projectExp}," +
                         "address=#{entity.address},resumeName=#{entity.resumeName}," +
+                        "eduExperience=#{entity.eduExperience},"+
                         "resumeName=#{entity.resumeName},resumePhoto=#{entity.resumePhoto},resumeTel=#{entity.resumeTel}");
                 WHERE("resumeId=#{entity.resumeId}");
             }

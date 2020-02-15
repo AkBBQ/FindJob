@@ -9,7 +9,7 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
-    <title>TheHunt - Bootstrap HTML5 Job Portal Template</title>
+    <title>编辑个人信息</title>
     <link rel="stylesheet" href="/style/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/assets/css/line-icons.css">
     <link rel="stylesheet" href="/style/assets/css/owl.carousel.min.css">
@@ -147,7 +147,7 @@
 <body>
 <div id="header">
     <div class="inner home-inner">
-        <div class="logo"> <a href="https://www.zhipin.com/" ka="header-home-logo" title="BOSS直聘"><span>BOSS直聘</span></a>
+        <div class="logo" style="padding-top: 10px"> <a href="" ka="header-home-logo" title="BOSS直聘"><p style="font-size: 20px;color: #00c2b3">猿猿招聘网</p></a>
 
         </div>
         <div class="nav">
@@ -198,7 +198,7 @@
             <div class="col-lg-12">
                 <div class="inner-header">
 
-                    <h3>Create Resume</h3>
+                    <h3>个人信息</h3>
 
                 </div>
             </div>
@@ -212,7 +212,7 @@
                 <div class="add-resume box">
                     <form class="form-ad" enctype="multipart/form-data" method="POST" action="${pageContext.request.contextPath}/user/editUser">
 
-                        <h3>基本信息</h3>
+                        <h3>个人基本信息</h3>
 
                         <div class="form-group">
                             <div class="row">
@@ -275,6 +275,7 @@
                         <div class="form-group">
                             <div class="button-group">
                                 <div class="action-buttons">
+                                    <label class="control-label">个人照片</label>
                                     <div id="preview">
                                         <img id="imghead" width=100% height=auto border=0 src='${user.userPhoto}'>
                                     </div>
@@ -288,7 +289,7 @@
                         <button class="btn btn-common" type="submit" style="margin-top: 30px;margin-bottom: 30px;">Save</button>
                     </form>
                     <form class="form-ad" enctype="multipart/form-data" method="POST" action="${pageContext.request.contextPath}/user/editResume">
-                        <h3>编辑简历信息</h3>
+                        <h3>个人简历信息</h3>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -311,6 +312,7 @@
                             <textarea class="form-control" rows="7" name="personalPoint">${resume.personalPoint}</textarea>
                         </div>
                         <div class="form-group">
+                            <label class="control-label">简历照片</label>
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div id="preview1">

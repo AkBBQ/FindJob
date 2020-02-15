@@ -9,7 +9,7 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
-    <title>TheHunt - Bootstrap HTML5 Job Portal Template</title>
+    <title>用户登录</title>
     <link rel="stylesheet" href="/style/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/assets/css/line-icons.css">
     <link rel="stylesheet" href="/style/assets/css/owl.carousel.min.css">
@@ -36,14 +36,14 @@
                         <span class="lni-menu"></span>
 
                     </button>
-                    <a href="index.html" class="navbar-brand">
+                    <a href="${pageContext.request.contextPath}/user/index" class="navbar-brand">
                         <img src="/style/assets/img/logo.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="navbar-nav mr-auto w-100 justify-content-end">
                         <li class="button-group">
-                            <a href="${pageContext.request.contextPath}/backUser/toBackLogin" class="button btn btn-common">Post a Job</a>
+                            <a href="${pageContext.request.contextPath}/backUser/toBackLogin" class="button btn btn-common">发布职位</a>
 
                         </li>
                     </ul>
@@ -59,7 +59,7 @@
             <div class="col-lg-12">
                 <div class="inner-header">
 
-                    <h3>Login</h3>
+                    <h3>欢迎光临猿猿招聘网</h3>
 
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="page-login-form box">
 
                     <h3>
-                        Login
+                        登陆
                     </h3>
 
                     <form class="login-form" action="${pageContext.request.contextPath}/user/doLogin" method="post">
@@ -81,7 +81,7 @@
                             <div class="input-icon">
                                 <i class="lni-user"></i>
 
-                                <input type="text" id="sender-email" class="form-control" name="userTel" placeholder="Username">
+                                <input type="text" id="sender-email" class="form-control" name="userTel" placeholder="phone">
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,7 +98,7 @@
                         <button class="btn btn-common log-btn">登录</button>
                     </form>
                     <ul class="form-links">
-                        <li class="text-center"><a href="http://preview.uideck.com/items/thehunt/register.html">没有账号?</a>
+                        <li class="text-center"><a href="${pageContext.request.contextPath}/user/toRegister">没有账号?</a>
                         </li>
                     </ul>
                 </div>

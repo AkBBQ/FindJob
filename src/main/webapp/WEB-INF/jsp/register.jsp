@@ -9,7 +9,7 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
-    <title>TheHunt - Bootstrap HTML5 Job Portal Template</title>
+    <title>用户注册页面</title>
 
     <link rel="stylesheet" href="/style/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/assets/css/line-icons.css">
@@ -37,14 +37,14 @@
                         <span class="lni-menu"></span>
 
                     </button>
-                    <a href="index.html" class="navbar-brand">
+                    <a href="${pageContext.request.contextPath}/user/index" class="navbar-brand">
                         <img src="/style/assets/img/logo.png" alt="">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="navbar-nav mr-auto w-100 justify-content-end">
                         <li class="button-group">
-                            <a href="${pageContext.request.contextPath}/backUser/toBackLogin" class="button btn btn-common">Post a Job</a>
+                            <a href="${pageContext.request.contextPath}/backUser/toBackLogin" class="button btn btn-common">发布招聘</a>
 
                         </li>
                     </ul>
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-header">
-                    <h3>Create Your account</h3>
+                    <h3>用户注册</h3>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="col-lg-5 col-md-6 col-xs-12">
                 <div class="page-login-form box">
                     <h3>
-                        Create Your account
+                        创建账号
                     </h3>
                     <form class="login-form" method="post" action="${pageContext.request.contextPath}/user/doRegister" onsubmit="return validate_form(this)">
                         <div class="form-group">
@@ -96,14 +96,14 @@
                                 <input type="password" class="form-control" name="userPwd" placeholder="Password">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="input-icon">
-                                <i class="lni-unlock"></i>
-                                <input type="password" class="form-control" name="userAgainPwd" placeholder="Retype Password">
-                            </div>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<div class="input-icon">--%>
+                                <%--<i class="lni-unlock"></i>--%>
+                                <%--<input type="password" class="form-control" name="userAgainPwd" placeholder="Retype Password">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <button class="btn btn-common log-btn mt-3">Register</button>
-                        <p class="text-center">Already have an account?<a href="${pageContext.request.contextPath}/user/tologin"> Sign In</a></p>
+                        <p class="text-center">已有账号?<a href="${pageContext.request.contextPath}/user/tologin"> 登陆</a></p>
                     </form>
                 </div>
             </div>

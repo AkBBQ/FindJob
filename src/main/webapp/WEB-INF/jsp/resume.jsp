@@ -9,7 +9,7 @@
  <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
  <meta name="author" content="Grayrids">
- <title>TheHunt - Bootstrap HTML5 Job Portal Template</title>
+ <title>个人简历</title>
  <link rel="stylesheet" href="/style/assets/css/bootstrap.min.css">
  <link rel="stylesheet" href="/style/assets/css/line-icons.css">
  <link rel="stylesheet" href="/style/assets/css/owl.carousel.min.css">
@@ -25,8 +25,7 @@
 <body>
 <div id="header">
  <div class="inner home-inner">
-  <div class="logo"> <a href="https://www.zhipin.com/" ka="header-home-logo" title="BOSS直聘"><span>BOSS直聘</span></a>
-
+  <div class="logo" style="padding-top: 10px"> <a href="" ka="header-home-logo" title="BOSS直聘"><p style="font-size: 20px;color: #00c2b3">猿猿招聘网</p></a>
   </div>
   <div class="nav">
    <ul>
@@ -53,7 +52,7 @@
    </c:if>
    <c:if test="${!empty sessionScope.user}">
     <ul>
-     <li class="cur"><a ka="header-resume" href="${pageContext.request.contextPath}/user/personale">简历</a>
+     <li class="cur"><a ka="header-resume" href="${pageContext.request.contextPath}/user/personal">简历</a>
      </li>
      <li class="nav-figure">
       <a href="${pageContext.request.contextPath}/user/personal" ka="header-username" style="display: inline;"> <span class="label-text">${user.userName}</span>
@@ -77,7 +76,7 @@
    <div class="col-lg-12">
     <div class="inner-header">
 
-     <h3>Resume</h3>
+     <h3>个人简历</h3>
 
     </div>
    </div>

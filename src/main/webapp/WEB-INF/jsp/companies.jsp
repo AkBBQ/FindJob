@@ -27,8 +27,7 @@
 <!--header-start -->
 <div id="header">
     <div class="inner home-inner">
-        <div class="logo"> <a href="https://www.zhipin.com/" ka="header-home-logo" title="BOSS直聘"><span>BOSS直聘</span></a>
-
+        <div class="logo" > <a href="" ka="header-home-logo" title="BOSS直聘"><p style="font-size: 20px;color: #00c2b3">猿猿招聘网</p></a>
         </div>
         <div class="nav">
             <ul>

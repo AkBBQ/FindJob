@@ -13,6 +13,7 @@ spring:
     #映射静态资源
     static-path-pattern: /**
 
+    #视图前后缀省略
     view:
       #prefix: /templates/views
       prefix: /WEB-INF/jsp/

@@ -14,7 +14,7 @@ import java.util.List;
 public interface PositionService {
 
     /**
-     * 最热职业
+     * 最新发布的职业
      *
      * @return
      */

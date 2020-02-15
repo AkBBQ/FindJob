@@ -2,6 +2,10 @@ package com.example.demo.entity.dto;
 
 import lombok.Data;
 
+/**
+ * 职位信息 前段展示对象
+ * @author xxx
+ */
 @Data
 public class PositionDTO {
 

@@ -2694,7 +2694,7 @@ input[type=checkbox]:checked:disabled + label:before {
   display: block;
   width: 110px;
   height: 36px;
-  background: url(https://static.zhipin.com/zhipin-geek/v84/web/geek/images/logo-2x.png) 3px 7px no-repeat;
+  /*background: url(https://static.zhipin.com/zhipin-geek/v84/web/geek/images/logo-2x.png) 3px 7px no-repeat;*/
   background-size: 105px 19px;
 }
 .logo span {

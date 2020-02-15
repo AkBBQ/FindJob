@@ -2,6 +2,11 @@ package com.example.demo.entity.dto;
 
 import lombok.Data;
 
+/**
+ * 用户信息类 前端展示对象
+ * @author xxx
+ */
+
 @Data
 public class UserDTO {
     private String userName;

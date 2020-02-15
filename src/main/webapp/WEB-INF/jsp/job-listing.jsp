@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trabajo HTML5 Responsive Template</title>
+    <title>招聘职位</title>
     <!-- Favicon -->
     <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="32x32">
     <!-- All CSS -->
@@ -27,9 +27,10 @@
       <!--header-start -->
       <div id="header">
           <div class="inner home-inner">
-              <div class="logo"> <a href="https://www.zhipin.com/" ka="header-home-logo" title="BOSS直聘"><span>BOSS直聘</span></a>
-
+              <div class="logo"> <a href="" ka="header-home-logo" title="BOSS直聘"><p style="font-size: 20px;color: #00c2b3">猿猿招聘网</p></a>
               </div>
+
+
               <div class="nav">
                   <ul>
                       <li><a ka="header-home" href="${pageContext.request.contextPath}/user/index">首页</a>

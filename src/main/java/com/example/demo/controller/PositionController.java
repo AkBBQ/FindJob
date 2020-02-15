@@ -16,6 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * 职位Controller
+ * @author xxx
+ */
 @Controller
 @RequestMapping("/job")
 public class PositionController {
@@ -26,6 +31,9 @@ public class PositionController {
     @Autowired
     private DeliverService deliverService;
 
+    /**
+     * 职位列表
+     */
     @RequestMapping("/jobList")
     public String getCompanyList(String positionName, String position, Model model, String currentPage){
         String condition=" 1=1 ";
@@ -62,12 +70,13 @@ public class PositionController {
         return "job-listing";
     }
 
+    /**
+     * 职位详情
+     */
     @RequestMapping("/positionDetail")
     public String positionDetail(String positionId, Model model, HttpSession session){
         int id=Integer.parseInt(positionId);
         PositionDTO positionDTO=positionService.getDetail(id);
-
-
         User user = (User)session.getAttribute("user");
         if (null != user) {
             List<Deliver> deliverList = deliverService.queryByPositionId(id, user.getUserId());

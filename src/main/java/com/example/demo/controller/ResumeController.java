@@ -19,6 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 简历Controller
+ * @author xxx
+ */
+
 @Controller
 @RequestMapping("/resume")
 public class ResumeController {
@@ -32,6 +37,12 @@ public class ResumeController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 新增/修改个人简历
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping("/toAddResume")
     public String toAddResume(HttpSession session, Model model){
         User user = (User)session.getAttribute("user");
@@ -39,12 +50,14 @@ public class ResumeController {
         session.setAttribute("user",u);
         model.addAttribute("user",u);
         Resume resume = resumeService.queryByUserId(user.getUserId());
-
         model.addAttribute("resume",resume);
-
         return "add-resume";
     }
 
+    /**
+     * 后台查看简历列表
+     * @return
+     */
     @RequestMapping("/resumeList")
     public String getCompanyList(String resumeName, Model model, String currentPage, HttpSession session){
         Company company = (Company)session.getAttribute("company");
