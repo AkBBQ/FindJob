@@ -22,7 +22,12 @@ public interface CompanyService {
 
     Company queryByCompanyId(int id);
 
-    int update(Company company);
+    void update(Company company);
 
+    /**
+     * 根据公司id查看公司详情
+     * @param id
+     * @return
+     */
     Company getDetail(int id);
 }

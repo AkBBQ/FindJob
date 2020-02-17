@@ -64,7 +64,7 @@ public class CompanySqlBuilder {
         }.toString();
     }
 
-    //查询详情
+    //查询公司详情
     public String selectByCompanyId (int companyId) {
         String sql = "select * from "+TABLE+" where companyId="+companyId;
         return sql;

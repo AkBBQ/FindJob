@@ -29,11 +29,17 @@ public class BackUserController {
     private UserService userService;
 
 
+    /**
+     * 后台登陆页面
+     */
     @RequestMapping("/toBackLogin")
     public String toBackLogin(){
         return "/background/login";
     }
 
+    /**
+     * 后台登录
+     */
     @RequestMapping("/doBackLogin")
     @ResponseBody
     public String doBackLogin(String companyNum, String companyPwd, HttpSession session, Model model){
@@ -50,6 +56,10 @@ public class BackUserController {
         return JSONArray.toJSONString(maps);
     }
 
+    /**
+     * 后台首页
+     * @return
+     */
     @RequestMapping("/toBackIndex")
     public String toIndex(){
         return "/background/index";

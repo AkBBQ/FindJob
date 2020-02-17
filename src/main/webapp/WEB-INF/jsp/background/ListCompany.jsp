@@ -56,7 +56,7 @@
                 <td >${company.companyAddr}</td>
                 <td >${company.companyIntro}</td>
 				<td >${company.registerPrice}</td>
-				<td ><textarea style="maxlength='10'" readonly="readonly">${company.companyInfo}</textarea></td>
+				<td ><textarea style="width:300px;height: 200px" readonly="readonly">${company.companyInfo}</textarea></td>
 				<td >${company.finance}</td>
 				<td >${company.companyType}</td>
           <td><div class="button-group">

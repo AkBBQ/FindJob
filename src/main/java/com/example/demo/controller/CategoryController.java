@@ -19,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * 后台分类Controller
+ * @author xxx
+ */
 @Controller
 @RequestMapping("/backCategory")
 public class CategoryController {

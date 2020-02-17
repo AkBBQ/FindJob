@@ -20,6 +20,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * 后台公司Controller
+ *
+ * @author xxx
+ */
 @Controller
 @RequestMapping("/backCompany")
 public class BackCompanyController {
@@ -27,45 +32,57 @@ public class BackCompanyController {
     @Autowired
     private CompanyService companyService;
 
+    /**
+     * 公司列表
+     *
+     * @return
+     */
     @RequestMapping("/companyList")
-    public String getCompanyList(String companyName, Model model, String currentPage, HttpSession session){
-        String condition=" 1=1 ";
-        int currentpage=0;
-        if(currentPage==null || currentPage.trim().equals("")){
-            currentpage=1;
-        }else{
-            currentpage=Integer.parseInt(currentPage);
+    public String getCompanyList(String companyName, Model model, String currentPage, HttpSession session) {
+        String condition = " 1=1 ";
+        int currentpage = 0;
+        if (currentPage == null || currentPage.trim().equals("")) {
+            currentpage = 1;
+        } else {
+            currentpage = Integer.parseInt(currentPage);
         }
-        Map<String,Object> map=new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
 
-        if (companyName!=null){
-            condition += " and companyName like '%"+companyName+"%' ";
+        if (companyName != null) {
+            condition += " and companyName like '%" + companyName + "%' ";
         }
         Company company = (Company) session.getAttribute("company");
         if (company.getStatus() == 0) {
-            condition += " and companyId ="+company.getCompanyId();
+            condition += " and companyId =" + company.getCompanyId();
         }
-        int count=companyService.getPageCount(condition);
-        int pageSize=6;
-        PageUtil<Company> param=new PageUtil<Company>();
+        int count = companyService.getPageCount(condition);
+        int pageSize = 6;
+        PageUtil<Company> param = new PageUtil<Company>();
         param.setTotalCount(count);
         param.setPageSize(pageSize);
         param.setCurrentPage(currentpage);
-        int startRow=param.getStartRow();
+        int startRow = param.getStartRow();
 
-        List<Company> companyList=companyService.getCompanyList(startRow, pageSize, condition);
+        List<Company> companyList = companyService.getCompanyList(startRow, pageSize, condition);
         param.setList(companyList);
         model.addAttribute("companyList", companyList);
         model.addAttribute("util", param);
         model.addAttribute("companyName", companyName);
-        model.addAttribute("currentPage",currentpage);
+        model.addAttribute("currentPage", currentpage);
         return "/background/ListCompany";
     }
 
+    /**
+     * 修改公司信息
+     *
+     * @param model
+     * @param companyId
+     * @return
+     */
     @RequestMapping("/{companyId}/toModifyCompany")
-    public String toModifyBook(Model model,@PathVariable("companyId")String companyId){
-        int id=Integer.parseInt(companyId);
-        Company company=companyService.queryByCompanyId(id);
+    public String toModifyBook(Model model, @PathVariable("companyId") String companyId) {
+        int id = Integer.parseInt(companyId);
+        Company company = companyService.queryByCompanyId(id);
         model.addAttribute("company", company);
         return "/background/modifyCompany";
     }
@@ -88,12 +105,7 @@ public class BackCompanyController {
                 path=path.substring(path.lastIndexOf("\\"));
 
                 company.setCompanyPhoto(path);
-                int result1=companyService.update(company);
-                if(result1>0){
-                    System.out.println("修改成功");
-                }else{
-                    System.out.println("修改失败");
-                }
+                companyService.update(company);
                 model.addAttribute("companyName", company.getCompanyName());
                 return "forward:/backCompany/companyList";
             } else {

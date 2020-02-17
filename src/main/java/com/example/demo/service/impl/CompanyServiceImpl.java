@@ -55,8 +55,8 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public int update(Company company) {
-        return companyMapper.update(company);
+    public void update(Company company) {
+         companyMapper.update(company);
     }
 
     @Override

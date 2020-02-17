@@ -46,6 +46,6 @@ public interface CompanyMapper {
 
     @SelectProvider(type = CompanySqlBuilder.class ,method = "update")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    int update(@Param(value = "entity")Company company);
+    void update(@Param(value = "entity")Company company);
 
 }

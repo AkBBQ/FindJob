@@ -15,7 +15,7 @@
 <body style="background-color:#f2f9fd;">
 <div class="header bg-main">
   <div class="logo margin-big-left fadein-top">
-    <h1><img src="/backStyle/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
+    <h1><img src="/backStyle/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />${sessionScope.company.companyName}</h1>
   </div>
   <div class="head-l"><a class="button button-little bg-green" href="${pageContext.request.contextPath }/backUser/toBackIndex" target="_self"><span class="icon-home"> 后台首页</span></a>&nbsp;&nbsp;
   <a class="button button-little bg-red" href="${pageContext.request.contextPath }/backUser/doLogout"><span class="icon-power-off"> 退出登录</span></a> </div>
@@ -76,4 +76,4 @@ $(function(){
   <iframe scrolling="auto" rameborder="0" src="${pageContext.request.contextPath}/backUser/welcome" name="right" width="100%" height="100%"></iframe>
 </div>
 </body>
-</jsp>
+</html>

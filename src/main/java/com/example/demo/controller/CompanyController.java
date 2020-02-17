@@ -86,6 +86,12 @@ public class CompanyController {
         return "companies";
     }
 
+    /**
+     * 公司详情
+     * @param companyId
+     * @param model
+     * @return
+     */
     @RequestMapping("/companyDetail")
     public String positionDetail(String companyId, Model model){
         int id=Integer.parseInt(companyId);

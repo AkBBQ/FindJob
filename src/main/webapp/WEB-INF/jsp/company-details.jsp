@@ -9,7 +9,7 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
-    <title>TheHunt - Bootstrap HTML5 Job Portal Template</title>
+    <title>公司详情</title>
     <link rel="stylesheet" href="/style/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/assets/css/line-icons.css">
     <link rel="stylesheet" href="/style/assets/css/owl.carousel.min.css">
@@ -25,7 +25,7 @@
 <body>
 <div id="header">
     <div class="inner home-inner">
-        <div class="logo"> <a href="https://www.zhipin.com/" ka="header-home-logo" title="BOSS直聘"><span>BOSS直聘</span></a>
+        <div class="logo" style="padding-top: 10px"> <a href="" ka="header-home-logo" title="BOSS直聘"><p style="font-size: 20px;color: #00c2b3">猿猿招聘网</p></a>
 
         </div>
         <div class="nav">
@@ -143,7 +143,7 @@
                     <div class="widghet">
                         <div class="maps">
                             <div id="map" class="map-full">
-                                <iframe src="http://ditu.google.cn/maps/embed?pb=!1m18!1m12!1m3!1d405691.57240383344!2d-122.3212843181106!3d37.40247298383319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb68ad0cfc739:0x7eb356b66bd4b50e!2sSilicon+Valley,+CA,+USA!5e0!3m2!1sen!2sbd!4v1538319316724"
+                                <iframe src="https://map.baidu.com/search/google%E4%B8%AD%E5%9B%BD/@13527039.645,3641594.53,15.47z?querytype=s&da_src=shareurl&wd=google%E4%B8%AD%E5%9B%BD&c=340&src=0&wd2=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA&pn=0&sug=1&l=19&b=(12685656.425,2560132.43;12686376.425,2560482.93)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&sug_forward=9b8c5ec0197e7e1dfbf0cb39&device_ratio=2"
                                         allowfullscreen=""></iframe>
                             </div>
                         </div>

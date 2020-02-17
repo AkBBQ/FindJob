@@ -33,7 +33,7 @@
       </div>
       <div class="form-group">
         <div class="label">
-       <input type="hidden" name="id" value="" />
+       <input type="hidden" name="companyId" value="${company.companyId}" />
           <label>公司图片：</label>
         </div>
         <div class="field">
