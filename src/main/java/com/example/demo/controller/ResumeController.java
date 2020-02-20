@@ -113,6 +113,9 @@ public class ResumeController {
 
     }
 
+    /**
+     * 简历详情
+     */
     @RequestMapping("/{resumeId}/resumeDetail")
     public String toModifyBook(Model model,@PathVariable("resumeId")String resumeId, HttpSession session){
         Company company = (Company)session.getAttribute("company");

@@ -81,6 +81,7 @@ public class PositionController {
         if (null != user) {
             List<Deliver> deliverList = deliverService.queryByPositionId(id, user.getUserId());
             if(deliverList.size() !=0){
+                //投递详情
                 int state = deliverList.get(0).getState();
                 if(state == 1){
                     model.addAttribute("state", "已同意");
@@ -90,14 +91,23 @@ public class PositionController {
                     model.addAttribute("state", "已投递");
                 }
                 model.addAttribute("status", 0);
+
+                //收藏详情
+                int favouriteStatus = deliverList.get(0).getFavourite();
+                if(favouriteStatus == 0){
+                    model.addAttribute("favouriteStatus", "0");
+                    model.addAttribute("favouriteDesc", "未收藏");
+
+                }else if(favouriteStatus == 1){
+                    model.addAttribute("favouriteStatus", "1");
+                    model.addAttribute("favouriteDesc", "已收藏");
+                }
             } else {
                 model.addAttribute("status", 1);
             }
         } else {
             model.addAttribute("status", 1);
         }
-
-
         model.addAttribute("positionDTO", positionDTO);
         model.addAttribute("positionId", id);
         return "job-details";

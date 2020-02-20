@@ -55,6 +55,39 @@
 
         }
     }
+
+
+    function  favourite(positionId){
+        if(confirm("您确定要收藏该职位吗?")){
+            $.ajax({
+                "url" : "${pageContext.request.contextPath}/favorite/myFavorite",
+                "type" : "POST",
+                "data" : {
+                    "positionId" : positionId},
+                "dataType" : "JSON",
+                "success" : function(data){
+                    if(data.result === "true"){
+                        alert("收藏成功！");
+                        location.href="${pageContext.request.contextPath}/job/positionDetail?positionId="+positionId+"&status=0";
+                    } else if(data.result === "false" ){
+                        alert("收藏失败!");
+                        location.href="${pageContext.request.contextPath}/job/positionDetail?positionId="+positionId;
+                    } else {
+                        if(confirm("未登录，请登录之后收藏，收藏失败，是否到登录页面？")){
+                            location.href="${pageContext.request.contextPath}/user/tologin";
+                        }
+                    }
+
+                },
+                "error": function (msg) {
+                    if (confirm("未登录，请登录之后收藏，收藏失败，是否到登录页面？")) {
+                        location.href="${pageContext.request.contextPath}/user/tologin";
+                    }
+                }
+            });
+
+        }
+    }
 </script>
 <div id="header">
     <div class="inner home-inner">
@@ -177,6 +210,15 @@
                     <c:if test="${status == 0}">
                             <div href="#" class="btn" style="cursor: not-allowed; background-color: #c5d9e8; border-color: #c5d9e8;">${state}</div>
                     </c:if>
+
+
+                    <c:if test="${favouriteStatus == 0}">
+                    <a href="#" class="btn btn-common" onclick="favourite(${positionDTO.positionId})">收藏</a>
+                    </c:if>
+                    <c:if test="${favouriteStatus == 1}">
+                        <div href="#" class="btn" style="cursor: not-allowed; background-color: #c5d9e8; border-color: #c5d9e8;">${favouriteDesc}</div>
+                    </c:if>
+
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-xs-12">

@@ -69,4 +69,18 @@ public class DeliverSqlBuilder {
             }
         }.toString();
     }
+
+    /**
+     * 修改收藏信息
+     */
+    public String updateFavourite () {
+        return new SQL() {
+            {
+                UPDATE(TABLE);
+                SET("favourite=#{favourite} "
+                );
+                WHERE("deliverId=#{deliverId}");
+            }
+        }.toString();
+    }
 }

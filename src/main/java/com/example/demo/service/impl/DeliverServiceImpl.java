@@ -44,4 +44,9 @@ public class DeliverServiceImpl implements DeliverService {
     public void updateDeliver(int deliverId, int state) {
         deliverMapper.updateDeliver(deliverId,state);
     }
+
+    @Override
+    public void updateFavorite(int deliverId, int favorite) {
+        deliverMapper.updateFavourite(deliverId,favorite);
+    }
 }
