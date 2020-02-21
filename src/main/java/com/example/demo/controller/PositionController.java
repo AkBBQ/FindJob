@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.Manger.FavoriteManger;
 import com.example.demo.entity.Deliver;
+import com.example.demo.entity.Favorite;
 import com.example.demo.entity.User;
 import com.example.demo.entity.dto.PositionDTO;
 import com.example.demo.service.DeliverService;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -30,6 +33,9 @@ public class PositionController {
 
     @Autowired
     private DeliverService deliverService;
+
+    @Autowired
+    private FavoriteManger favoriteManger;
 
     /**
      * 职位列表
@@ -92,27 +98,27 @@ public class PositionController {
                 }
                 model.addAttribute("status", 0);
 
-                //收藏详情
-//                int favouriteStatus = deliverList.get(0).getFavourite();
-//                if(favouriteStatus == 0){
-//                    model.addAttribute("favouriteStatus", "0");
-//                    model.addAttribute("favouriteDesc", "未收藏");
-//
-//                }else if(favouriteStatus == 1){
-//                    model.addAttribute("favouriteStatus", "1");
-//                    model.addAttribute("favouriteDesc", "已收藏");
-//                }
             } else {
                 model.addAttribute("status", 1);
             }
         } else {
             model.addAttribute("status", 1);
         }
+
+        //根据用户id和职位id去查看当前职位是否收藏过
+        Favorite favorite = favoriteManger.findFavourite(Favorite.builder().positionId(id).userId(user.getUserId()).build());
+        if(Objects.isNull(favorite)){
+            model.addAttribute("favouriteStatus", "0");
+            model.addAttribute("favouriteDesc", "未收藏");
+        }else{
+            model.addAttribute("favouriteStatus", "1");
+            model.addAttribute("favouriteDesc", "已收藏");
+        }
+
         model.addAttribute("positionDTO", positionDTO);
         model.addAttribute("positionId", id);
         return "job-details";
     }
-
 
 
 }

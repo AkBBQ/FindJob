@@ -60,7 +60,7 @@
     function  favourite(positionId){
         if(confirm("您确定要收藏该职位吗?")){
             $.ajax({
-                "url" : "${pageContext.request.contextPath}/favorite/myFavorite",
+                "url" : "${pageContext.request.contextPath}/favorite/addMyFavorite",
                 "type" : "POST",
                 "data" : {
                     "positionId" : positionId},
