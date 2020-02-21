@@ -38,11 +38,6 @@ public class Deliver {
     private int state;
 
     /**
-     * 收藏状态 0:未收藏 1:已收藏
-     */
-    private int favourite;
-
-    /**
      * 投递时间
      */
     private String deliverTime;

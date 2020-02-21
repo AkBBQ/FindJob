@@ -93,15 +93,15 @@ public class PositionController {
                 model.addAttribute("status", 0);
 
                 //收藏详情
-                int favouriteStatus = deliverList.get(0).getFavourite();
-                if(favouriteStatus == 0){
-                    model.addAttribute("favouriteStatus", "0");
-                    model.addAttribute("favouriteDesc", "未收藏");
-
-                }else if(favouriteStatus == 1){
-                    model.addAttribute("favouriteStatus", "1");
-                    model.addAttribute("favouriteDesc", "已收藏");
-                }
+//                int favouriteStatus = deliverList.get(0).getFavourite();
+//                if(favouriteStatus == 0){
+//                    model.addAttribute("favouriteStatus", "0");
+//                    model.addAttribute("favouriteDesc", "未收藏");
+//
+//                }else if(favouriteStatus == 1){
+//                    model.addAttribute("favouriteStatus", "1");
+//                    model.addAttribute("favouriteDesc", "已收藏");
+//                }
             } else {
                 model.addAttribute("status", 1);
             }

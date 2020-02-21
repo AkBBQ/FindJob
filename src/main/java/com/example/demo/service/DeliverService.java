@@ -39,10 +39,6 @@ public interface DeliverService {
      */
     void updateDeliver(int deliverId, int state);
 
-    /**
-     * 更新收藏记录
-     */
-    void updateFavorite(int deliverId, int favorite);
 
 
 }

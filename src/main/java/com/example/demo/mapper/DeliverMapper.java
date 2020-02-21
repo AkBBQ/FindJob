@@ -36,8 +36,4 @@ public interface DeliverMapper {
     @SelectProvider(type = DeliverSqlBuilder.class ,method = "updateDeliver")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     void updateDeliver(@Param(value = "deliverId")int deliverId, @Param(value = "state")int state);
-
-    @SelectProvider(type = DeliverSqlBuilder.class ,method = "updateFavourite")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    void updateFavourite(@Param(value = "deliverId")int deliverId, @Param(value = "favourite")int favourite);
 }
