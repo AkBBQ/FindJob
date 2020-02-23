@@ -1,6 +1,7 @@
 package com.example.demo.Manger;
 
 import com.example.demo.entity.Favorite;
+import java.util.List;
 
 /**
  * All rights Reserved, Designed By www.maihaoche.com
@@ -14,11 +15,13 @@ public interface FavoriteManger {
     /**
      * 根据用户ID、公司id/职位id 查看是否收藏
      */
-    Favorite findFavourite(Favorite favorite);
+    List<Favorite> findFavourite(Favorite favorite);
 
     /**
      * 新增我的收藏
      * @param favorite
      */
     void addFavourite(Favorite favorite);
+
+
 }

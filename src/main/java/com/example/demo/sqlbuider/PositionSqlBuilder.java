@@ -11,7 +11,7 @@ public class PositionSqlBuilder {
     private static final String TABLE = "position";
 
     public String selectTopPosition(){
-        String sql = "select * from "+TABLE+", company where company.companyId = position.companyId limit 0 , 9 ";
+        String sql = "select * from "+TABLE+", company where company.companyId = position.company_id limit 0 , 9 ";
         System.out.println(sql);
         return sql;
     }
@@ -30,7 +30,7 @@ public class PositionSqlBuilder {
 
         String conditions = (String) map.get("query");
 
-        String WHERE = " where company.companyId = position.companyId and " + conditions + " ";
+        String WHERE = " where company.companyId = position.company_id and " + conditions + " ";
 
         String sql = "select *  from "+TABLE+", company "+WHERE+" order by releaseDate desc limit "+(int)map.get("startRow")+","+(int) map.get("pageSize");
 
@@ -42,7 +42,7 @@ public class PositionSqlBuilder {
             {
                 SELECT("*");
                 FROM(TABLE+",company,category ");
-                WHERE("company.companyId = position.companyId and category.categoryId = position.categoryId and positionId=#{positionId}");
+                WHERE("company.companyId = position.company_id and category.categoryId = position.categoryId and position.position_id=#{positionId}");
             }
         }.toString();
     }

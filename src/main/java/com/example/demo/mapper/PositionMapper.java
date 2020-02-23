@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Position;
 import com.example.demo.entity.dto.PositionDTO;
 import com.example.demo.sqlbuider.PositionSqlBuilder;
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import java.util.List;
 
 @Mapper
-public interface PositionMapper {
+public interface PositionMapper extends BaseMapper<Position> {
 
     @SelectProvider(type = PositionSqlBuilder.class ,method = "selectTopPosition")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)

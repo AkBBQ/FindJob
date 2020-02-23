@@ -11,13 +11,13 @@ import com.example.demo.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 
 /**
@@ -106,8 +106,8 @@ public class PositionController {
         }
 
         //根据用户id和职位id去查看当前职位是否收藏过
-        Favorite favorite = favoriteManger.findFavourite(Favorite.builder().positionId(id).userId(user.getUserId()).build());
-        if(Objects.isNull(favorite)){
+        List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().positionId(id).userId(user.getUserId()).build());
+        if(CollectionUtils.isEmpty(favourite)){
             model.addAttribute("favouriteStatus", "0");
             model.addAttribute("favouriteDesc", "未收藏");
         }else{

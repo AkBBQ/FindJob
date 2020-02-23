@@ -7,6 +7,7 @@ import com.example.demo.mapper.FavouriteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -24,17 +25,17 @@ public class FavoriteMangerImpl implements FavoriteManger {
     private FavouriteMapper favouriteMapper;
 
     @Override
-    public Favorite findFavourite(Favorite favorite) {
+    public List<Favorite> findFavourite(Favorite favorite) {
 
         QueryWrapper<Favorite> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id",favorite.getUserId());
-        if(Objects.nonNull(favorite.getCompanyId())){
+        if(Objects.nonNull(favorite.getCompanyId()) && !Integer.valueOf(0).equals(favorite.getCompanyId())){
             wrapper.eq("company_id",favorite.getCompanyId());
         }
-        if(Objects.nonNull(favorite.getPositionId())){
+        if(Objects.nonNull(favorite.getPositionId()) && !Integer.valueOf(0).equals(favorite.getPositionId())){
             wrapper.eq("position_id",favorite.getPositionId());
         }
-        return favouriteMapper.selectOne(wrapper);
+        return favouriteMapper.selectList(wrapper);
     }
 
     @Override
