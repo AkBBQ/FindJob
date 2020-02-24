@@ -68,8 +68,12 @@
                    <div id="tip" style="color:red;margin: 0 auto;" ></div>
                 </div>
                 <div style="padding:30px;"><input type="button" onclick="javascript:login()" class="button button-block bg-main text-big input-big" value="登录"></div>
+                <ul class="form-links">
+                    <li class="text-center"><a href="${pageContext.request.contextPath}/backCompany/toRegister">没有账号?</a>
+                    </li>
+                </ul>
             </div>
-            </form>          
+            </form>
         </div>
     </div>
 </div>

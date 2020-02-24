@@ -35,3 +35,8 @@ spring:
 
 server:
   port: 8081
+
+#关闭驼峰命名
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false

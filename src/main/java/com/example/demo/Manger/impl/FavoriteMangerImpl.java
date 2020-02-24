@@ -3,7 +3,7 @@ package com.example.demo.Manger.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Manger.FavoriteManger;
 import com.example.demo.entity.Favorite;
-import com.example.demo.mapper.FavouriteMapper;
+import com.example.demo.mapper.MpMapper.FavouriteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

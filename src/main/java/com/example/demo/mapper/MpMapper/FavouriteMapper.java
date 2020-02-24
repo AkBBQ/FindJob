@@ -1,4 +1,4 @@
-package com.example.demo.mapper;
+package com.example.demo.mapper.MpMapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Favorite;

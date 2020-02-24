@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Manger.CompanyManger;
 import com.example.demo.entity.Company;
 import com.example.demo.service.CompanyService;
 import com.example.demo.utils.PageUtil;
@@ -15,10 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 后台公司Controller
@@ -31,6 +29,43 @@ public class BackCompanyController {
 
     @Autowired
     private CompanyService companyService;
+
+    @Autowired
+    private CompanyManger companyManger;
+
+
+
+
+    /**
+     * 注册公司页面跳转
+     *
+     * @return
+     */
+    @RequestMapping("/toRegister")
+    public String toRegister() {
+        return "/background/Register";
+    }
+
+    /**
+     * 注册公司
+     *
+     * @return
+     */
+    @RequestMapping("/doRegister")
+    public String doRegister(Company company,Model model) {
+        try {
+            Company queryResult = companyManger.findCompanyByCompanyNum(company.getCompanyNum());
+            if(Objects.nonNull(queryResult)){
+                model.addAttribute("message", "该账号已经被注册过！");
+                return "/toRegister";
+            }
+            companyManger.addCompany(company);
+            return "redirect:/backUser/toBackLogin";
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
 
     /**
      * 公司列表
@@ -94,15 +129,15 @@ public class BackCompanyController {
                                HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
 
         if (!file.isEmpty()) {
-            String path = request.getRealPath("statics/images/") + File.separator
+            String path = request.getRealPath("/resource/uploads/") + File.separator
                     + System.currentTimeMillis() + file.getOriginalFilename();
             File newFile = new File(path);
             String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-            if (suffix.equals(".jpg") || suffix.equals(".jpeg")) {
+            if (suffix.equalsIgnoreCase(".jpg") || suffix.equalsIgnoreCase(".jpeg")) {
                 Random random = new Random();
-                int result = random.nextInt();
                 file.transferTo(newFile);
-                path=path.substring(path.lastIndexOf("\\"));
+                //截取掉根路径
+                path=path.substring(path.lastIndexOf("/resource"));
 
                 company.setCompanyPhoto(path);
                 companyService.update(company);
@@ -115,5 +150,13 @@ public class BackCompanyController {
         } else {
             return "forward:/backCompany/companyList";
         }
+    }
+
+
+    public static void main(String[] args) {
+        String path = "forward:/backCompany/companyList";
+        String substring = path.substring(path.lastIndexOf("/back"));
+        System.out.println(substring);
+
     }
 }
