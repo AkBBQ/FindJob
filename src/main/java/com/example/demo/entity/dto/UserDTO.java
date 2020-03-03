@@ -51,4 +51,15 @@ public class UserDTO {
     private String resumeName;
 
     private String resumeTel;
+
+    /**
+     * 感兴趣
+     */
+    private Integer myFavourites;
+
+    /**
+     * 投递过简历的数量
+     */
+    private Integer delivers;
+
 }

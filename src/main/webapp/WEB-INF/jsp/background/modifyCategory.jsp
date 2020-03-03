@@ -49,6 +49,7 @@
           <label>分类名称：</label>
         </div>
        <div class="field">
+           <fm:input  path ="categoryId" type="hidden" value="${category.categoryId}"/>
            <fm:input class="input w50" path="categoryName" placeholder="请输入分类名称" data-validate="required:请输入分类名称" value="${category.categoryName}"/>
            <div class="tips"></div>
         </div>

@@ -28,12 +28,12 @@ public class FavoriteMangerImpl implements FavoriteManger {
     public List<Favorite> findFavourite(Favorite favorite) {
 
         QueryWrapper<Favorite> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id",favorite.getUserId());
+        wrapper.eq("userId",favorite.getUserId());
         if(Objects.nonNull(favorite.getCompanyId()) && !Integer.valueOf(0).equals(favorite.getCompanyId())){
-            wrapper.eq("company_id",favorite.getCompanyId());
+            wrapper.eq("companyId",favorite.getCompanyId());
         }
         if(Objects.nonNull(favorite.getPositionId()) && !Integer.valueOf(0).equals(favorite.getPositionId())){
-            wrapper.eq("position_id",favorite.getPositionId());
+            wrapper.eq("positionId",favorite.getPositionId());
         }
         return favouriteMapper.selectList(wrapper);
     }

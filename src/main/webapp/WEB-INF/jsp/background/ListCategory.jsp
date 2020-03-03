@@ -31,7 +31,7 @@
     <tr>
       <td>${status.index+1}</td>
       <td>${category.categoryName}</td>
-      <td><img alt="图片" src="/style/assets/img/about/${category.categoryPhoto}"></td>
+      <td><img  width="100px" height="100px" alt="图片" src="${category.categoryPhoto}"></td>
       <td><div class="button-group"> <a class="button border-main" href="${pageContext.request.contextPath}/backCategory/${category.categoryId}/toModifyCategory"><span class="icon-edit"></span> 修改</a> </div></td>
     </tr>
     </c:forEach>

@@ -73,7 +73,7 @@ public class BackPositionController {
     }
 
     @RequestMapping("/doAddPosition")
-    public String doAddPosition(Position position, Model model, HttpSession session) {
+    public String doAddPosition(Position position, HttpSession session) {
         Company company = (Company) session.getAttribute("company");
         position.setCompanyId(company.getCompanyId());
         positionService.addPosition(position);

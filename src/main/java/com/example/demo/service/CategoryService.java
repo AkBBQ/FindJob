@@ -12,7 +12,7 @@ public interface CategoryService {
 
     Category queryByCategoryId(int id);
 
-    int update(Category category);
+    void update(Category category);
 
     List<Category> queryAll();
 }

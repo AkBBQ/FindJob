@@ -47,7 +47,7 @@ public class CategorySqlBuilder {
         return new SQL() {
             {
                 UPDATE(TABLE);
-                SET("categoryName=#{entity.categoryyName},categoryPhoto=#{entity.categoryPhoto} "
+                SET("categoryName=#{entity.categoryName},categoryPhoto=#{entity.categoryPhoto} "
                          );
                 WHERE("categoryId=#{entity.categoryId}");
             }

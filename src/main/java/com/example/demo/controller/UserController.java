@@ -1,14 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Company;
-import com.example.demo.entity.Resume;
-import com.example.demo.entity.User;
+import com.example.demo.Manger.FavoriteManger;
+import com.example.demo.entity.*;
 import com.example.demo.entity.dto.PositionDTO;
 import com.example.demo.entity.dto.UserDTO;
-import com.example.demo.service.CompanyService;
-import com.example.demo.service.PositionService;
-import com.example.demo.service.ResumeService;
-import com.example.demo.service.UserService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +41,12 @@ public class UserController {
 
     @Autowired
     private ResumeService resumeService;
+
+    @Autowired
+    private FavoriteManger favoriteManger;
+
+    @Autowired
+    private DeliverService deliverService;
 
     /**
      * 跳转登陆页面
@@ -154,6 +156,11 @@ public class UserController {
     public String personal(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         UserDTO userDTO = userService.findResumeByUser(user.getUserId());
+        //我的收藏以及投递过的简历数量
+        List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().userId(user.getUserId()).build());
+        userDTO.setMyFavourites(favourite.size());
+        List<Deliver> delivers = deliverService.queryUserDeliverHistory(user.getUserId());
+        userDTO.setDelivers(delivers.size());
         model.addAttribute("userDTO", userDTO);
         return "resume";
     }

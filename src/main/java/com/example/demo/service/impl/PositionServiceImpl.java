@@ -42,7 +42,7 @@ public class PositionServiceImpl implements PositionService {
         List<PositionDTO> results = new ArrayList<>();
 
         QueryWrapper<Position> queryWrapper = new QueryWrapper();
-        queryWrapper.in("position_id",positionCommand.getPositionId());
+        queryWrapper.in("positionId",positionCommand.getPositionId());
         IPage<Position> page = new Page<>();
         if(Objects.isNull(current)){
           page.setCurrent(1);

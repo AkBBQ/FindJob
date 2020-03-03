@@ -26,6 +26,11 @@ public class DeliverServiceImpl implements DeliverService {
     }
 
     @Override
+    public List<Deliver> queryUserDeliverHistory(int userId) {
+        return deliverMapper.selectUserDeliverHistory(userId);
+    }
+
+    @Override
     public int getPageCount(String condition) {
         return deliverMapper.getPageCount(condition);
     }

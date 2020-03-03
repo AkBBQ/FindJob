@@ -28,6 +28,19 @@ public class DeliverSqlBuilder {
         return sql;
     }
 
+
+
+    /**
+     *
+     查看用户投递记录
+     * @param userId
+     * @return
+     */
+    public String selectUserDeliverHistory (int userId) {
+        String sql = "select * from "+TABLE+" where userId="+userId;
+        return sql;
+    }
+
     public String getPageCount(Map<String,Object> map){
         String conditions = (String) map.get("condition");
 

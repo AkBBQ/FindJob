@@ -30,8 +30,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int update(Category category) {
-        return categoryMapper.update(category);
+    public void update(Category category) {
+         categoryMapper.update(category);
     }
 
     @Override

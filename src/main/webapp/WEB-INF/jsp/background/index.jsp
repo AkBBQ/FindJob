@@ -40,6 +40,9 @@
   <ul>
     <li><a href="${pageContext.request.contextPath}/resume/resumeList" target="right"><span class="icon-caret-right"></span>简历列表</a></li>
   </ul>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/resume/resumeList" target="right"><span class="icon-caret-right"></span>已被录用</a></li>
+    </ul>
   <c:if test="${sessionScope.company.status == 1}">
       <h2><span class="icon-pencil-square-o"></span>类别管理</h2>
       <ul>
@@ -53,6 +56,20 @@
         <li><a href="${pageContext.request.contextPath}/backPosition/toAddPosition" target="right"><span class="icon-caret-right"></span>发布职位信息</a></li>
     </c:if>
   </ul>
+
+    <c:if test="${sessionScope.company.status == 0}">
+    <h2><span class="icon-pencil-square-o"></span>评论信息</h2>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/evaluate/showEvaluate" target="right"><span class="icon-caret-right"></span>评论列表</a></li>
+    </ul>
+    </c:if>
+
+    <c:if test="${sessionScope.company.status == 0}">
+        <h2><span class="icon-pencil-square-o"></span>人才库</h2>
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/backPosition/positionList" target="right"><span class="icon-caret-right"></span>我的收藏</a></li>
+        </ul>
+    </c:if>
     <input type="hidden" name="name" value="${sessionScope.company.companyName}"/>
 </div>
 <script type="text/javascript">

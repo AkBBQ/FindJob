@@ -97,7 +97,7 @@
             </div>
             <div class="userinfo">${userDTO.userAge} <i class="vline"></i> 2年 <i class="vline"></i> ${userDTO.userEdu}</div>
             <!---->
-            <div class="user-stat"><a href="#" class=""><b>475</b>沟通过 </a><a href="#" class=""><b>71</b>已投递 </a><a href="#" class=""><b>0</b>面试 </a><a href="${pageContext.request.contextPath}/favorite/showMyFavorite" class=""><b>0</b>感兴趣 </a>
+            <div class="user-stat"><a href="#" class=""><b>0</b>沟通过 </a><a href="${pageContext.request.contextPath}/backDeliver/deliverHistory" class=""><b>${userDTO.delivers}</b>已投递 </a><a href="#" class=""><b>0</b>面试 </a><a href="${pageContext.request.contextPath}/favorite/showMyFavorite" class=""><b>${userDTO.myFavourites}</b>感兴趣 </a>
             </div>
         </div>
         <div class="sider-box sider-vip">

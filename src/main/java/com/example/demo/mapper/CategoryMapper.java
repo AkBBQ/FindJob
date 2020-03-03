@@ -26,7 +26,7 @@ public interface CategoryMapper {
 
     @SelectProvider(type = CategorySqlBuilder.class ,method = "update")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    int update(@Param(value = "entity") Category category);
+    void update(@Param(value = "entity") Category category);
 
     @SelectProvider(type = CategorySqlBuilder.class ,method = "queryAll")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)

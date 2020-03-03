@@ -77,22 +77,17 @@ public class CategoryController {
                                HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
 
         if (!file.isEmpty()) {
-            String path = request.getRealPath("statics/images/") + File.separator
+            String path = request.getRealPath("/resource/uploads") + File.separator
                     + System.currentTimeMillis() + file.getOriginalFilename();
             File newFile = new File(path);
             String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-            if (suffix.equals(".jpg") || suffix.equals(".jpeg")) {
+            if (suffix.equalsIgnoreCase(".jpg") || suffix.equalsIgnoreCase(".jpeg")) {
                 Random random = new Random();
                 int result = random.nextInt();
                 file.transferTo(newFile);
-                path=path.substring(path.lastIndexOf("\\"));
+                path=path.substring(path.lastIndexOf("/resource"));
                 category.setCategoryPhoto(path);
-                int result1=categoryService.update(category);
-                if(result1>0){
-                    System.out.println("修改成功");
-                }else{
-                    System.out.println("修改失败");
-                }
+                categoryService.update(category);
                 return "forward:/backCategory/categoryList";
             } else {
                 request.setAttribute("msg", "修改成功");

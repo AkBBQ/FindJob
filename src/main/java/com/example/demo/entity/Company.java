@@ -114,7 +114,7 @@ public class Company {
     private String companyType;
 
     /**
-     * 状态
+     * 状态 0:代表公司 1：代表系统管理员
      */
     @TableId(value = "status")
     private int status;
