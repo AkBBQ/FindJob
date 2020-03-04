@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.back;
 
 import com.example.demo.Manger.CompanyManger;
 import com.example.demo.entity.Company;

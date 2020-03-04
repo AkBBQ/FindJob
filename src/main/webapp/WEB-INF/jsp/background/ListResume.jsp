@@ -31,16 +31,11 @@
     </div>
     <table class="table table-hover text-center">
       <tr>
-        <th width="10%">简历编号</th>
-        <th width="10%">简历图片</th>
+        <th width="10%">编号</th>
+        <th width="10%">照片</th>
         <th width="10%">名字</th>
         <th width="10%">地址</th>
         <th width="10%">电话</th>
-        <th width="10%">个人优势</th>
-        <th width="15%">渴望职位</th>
-        <th width="10%">工作经验</th>
-        <th width="10%">项目经验</th>
-        <th width="15%">教育经历</th>
         <c:if test="${company.status == 0}">
           <th width="15%">投递时间</th>
           <th width="15%">状态</th>
@@ -52,15 +47,10 @@
       <c:forEach items="${resumeList}" var="resume" varStatus="px">
         <tr>
                <td >${px.count}</td>
-                <td ><img src="${resume.resumePhoto}" alt="简历列表" style="width: 150px;"></td>
+                <td ><img src="${resume.resumePhoto}" alt="照片" style="width: 150px;"></td>
 				<td >${resume.resumeName}</td>
 				<td >${resume.address}</td>
 				<td >${resume.resumeTel}</td>
-                <td ><textarea style="maxlength='10'" readonly="readonly">${resume.personalPoint}</textarea></td>
-                <td >${resume.desirePosition}</td>
-                <td ><textarea style="maxlength='10'" readonly="readonly">${resume.workExperience}</textarea></td>
-                <td ><textarea style="maxlength='10'" readonly="readonly">${resume.projectExp}</textarea></td>
-                <td ><textarea style="maxlength='10'" readonly="readonly">${resume.eduExperience}</textarea></td>
                 <c:if test="${company.status == 0}">
                   <td >${resume.deliverTime}</td>
                   <c:if test="${resume.state == 0}">
@@ -75,10 +65,10 @@
                 </c:if>
           <td><div class="button-group">
             <c:if test="${company.status == 0}">
-              <a class="button border-main" href="${pageContext.request.contextPath}/resume/${resume.deliverId}/resumeDetail"><span class="icon-edit"></span>查看</a>
+              <a class="button border-main" href="${pageContext.request.contextPath}/resume/${resume.deliverId}/resumeDetail"><span class="icon-edit"></span>详情</a>
             </c:if>
-            <c:if test="${company.status == 1}">
-              <a class="button border-main" href="${pageContext.request.contextPath}/resume/${resume.resumeId}/resumeDetail"><span class="icon-edit"></span>查看</a>
+            <c:if test="${company.status == 0}">
+              <a class="button border-main" href="${pageContext.request.contextPath}/favorite/${resume.userId}/addTalentPool"><span class="icon-edit"></span>加入人才库</a>
             </c:if>
             </div></td>
         </tr>

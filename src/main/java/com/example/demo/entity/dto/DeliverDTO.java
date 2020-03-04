@@ -11,6 +11,8 @@ public class DeliverDTO {
 
     private int deliverId;
 
+    private Integer userId;
+
     private String userName;
 
     private Integer resumeId;

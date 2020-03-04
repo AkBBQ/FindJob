@@ -67,7 +67,7 @@
     <c:if test="${sessionScope.company.status == 0}">
         <h2><span class="icon-pencil-square-o"></span>人才库</h2>
         <ul>
-            <li><a href="${pageContext.request.contextPath}/backPosition/positionList" target="right"><span class="icon-caret-right"></span>我的收藏</a></li>
+            <li><a href="${pageContext.request.contextPath}/favorite/showTalentPool" target="right"><span class="icon-caret-right"></span>我的收藏</a></li>
         </ul>
     </c:if>
     <input type="hidden" name="name" value="${sessionScope.company.companyName}"/>

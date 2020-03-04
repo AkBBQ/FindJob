@@ -28,7 +28,10 @@ public class FavoriteMangerImpl implements FavoriteManger {
     public List<Favorite> findFavourite(Favorite favorite) {
 
         QueryWrapper<Favorite> wrapper = new QueryWrapper<>();
-        wrapper.eq("userId",favorite.getUserId());
+        if(Objects.nonNull(favorite.getUserId()) && !Integer.valueOf(0).equals(favorite.getUserId())){
+            wrapper.eq("userId",favorite.getUserId());
+        }
+
         if(Objects.nonNull(favorite.getCompanyId()) && !Integer.valueOf(0).equals(favorite.getCompanyId())){
             wrapper.eq("companyId",favorite.getCompanyId());
         }
