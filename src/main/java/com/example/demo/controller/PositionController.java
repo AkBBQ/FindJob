@@ -101,19 +101,20 @@ public class PositionController {
             } else {
                 model.addAttribute("status", 1);
             }
+
+            //根据用户id和职位id去查看当前职位是否收藏过
+            List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().positionId(id).userId(user.getUserId()).build());
+            if(CollectionUtils.isEmpty(favourite)){
+                model.addAttribute("favouriteStatus", "0");
+                model.addAttribute("favouriteDesc", "未收藏");
+            }else{
+                model.addAttribute("favouriteStatus", "1");
+                model.addAttribute("favouriteDesc", "已收藏");
+            }
         } else {
             model.addAttribute("status", 1);
         }
 
-        //根据用户id和职位id去查看当前职位是否收藏过
-        List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().positionId(id).userId(user.getUserId()).build());
-        if(CollectionUtils.isEmpty(favourite)){
-            model.addAttribute("favouriteStatus", "0");
-            model.addAttribute("favouriteDesc", "未收藏");
-        }else{
-            model.addAttribute("favouriteStatus", "1");
-            model.addAttribute("favouriteDesc", "已收藏");
-        }
 
         model.addAttribute("positionDTO", positionDTO);
         model.addAttribute("positionId", id);

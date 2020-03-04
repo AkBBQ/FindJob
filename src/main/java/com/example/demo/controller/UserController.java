@@ -8,6 +8,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 用户Controller中心
@@ -50,6 +52,7 @@ public class UserController {
 
     /**
      * 跳转登陆页面
+     *
      * @return
      */
     @RequestMapping("/tologin")
@@ -59,6 +62,7 @@ public class UserController {
 
     /**
      * 登陆
+     *
      * @param userTel
      * @param userPwd
      * @param session
@@ -110,6 +114,10 @@ public class UserController {
             Resume resume = new Resume();
             resume.setUserId(id);
             resumeService.addResume(resume);
+            //将简历id插入用户表中
+            Resume resume1 = resumeService.queryByUserId(id);
+            newUser.setResumeId(resume1.getResumeId());
+            userService.updateUser(newUser);
             return "login";
         }
 
@@ -117,6 +125,7 @@ public class UserController {
 
     /**
      * 网站首页
+     *
      * @param model
      * @return
      */
@@ -135,6 +144,7 @@ public class UserController {
 
     /**
      * 注销
+     *
      * @param session
      * @return
      * @throws Exception
@@ -148,6 +158,7 @@ public class UserController {
 
     /**
      * 展示用户信息
+     *
      * @param session
      * @param model
      * @return
@@ -155,12 +166,32 @@ public class UserController {
     @RequestMapping("/personal")
     public String personal(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
+        if (Objects.isNull(user)) {
+            return "redirect:/user/tologin";
+
+        }
         UserDTO userDTO = userService.findResumeByUser(user.getUserId());
-        //我的收藏以及投递过的简历数量
-        List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().userId(user.getUserId()).build());
-        userDTO.setMyFavourites(favourite.size());
-        List<Deliver> delivers = deliverService.queryUserDeliverHistory(user.getUserId());
-        userDTO.setDelivers(delivers.size());
+        if (Objects.nonNull(userDTO)) {
+            //我的收藏以及投递过的简历数量
+            List<Favorite> favourite = favoriteManger.findFavourite(Favorite.builder().userId(user.getUserId()).build());
+            if (!CollectionUtils.isEmpty(favourite)) {
+                userDTO.setMyFavourites(favourite.size());
+            } else {
+                userDTO.setMyFavourites(0);
+            }
+            List<Deliver> delivers = deliverService.queryUserDeliverHistory(user.getUserId());
+            if (!CollectionUtils.isEmpty(delivers)) {
+                userDTO.setDelivers(delivers.size());
+            } else {
+                userDTO.setDelivers(0);
+            }
+        } else {
+            UserDTO userDTO1 = new UserDTO();
+            userDTO1.setDelivers(0);
+            userDTO1.setMyFavourites(0);
+            model.addAttribute("userDTO", userDTO1);
+            return "resume";
+        }
         model.addAttribute("userDTO", userDTO);
         return "resume";
     }
@@ -171,7 +202,12 @@ public class UserController {
     @RequestMapping("/editUser")
     public String editUser(HttpServletRequest request, MultipartFile userPhoto1, User user, HttpSession session) throws IOException {
         User user1 = (User) session.getAttribute("user");
+        if (Objects.isNull(user1)) {
+            return "redirect:/user/tologin";
+
+        }
         user.setUserId(user1.getUserId());
+        user.setResumeId(user1.getResumeId());
         //上传图片
         if (userPhoto1.getSize() != 0) {
             String newFileName = uploadFile(request, userPhoto1);
@@ -183,11 +219,16 @@ public class UserController {
 
     /**
      * 修改简历
+     *
      * @throws IOException
      */
     @RequestMapping("/editResume")
     public String editResume(HttpServletRequest request, MultipartFile resumePhoto1, Resume resume, HttpSession session) throws IOException {
         User user1 = (User) session.getAttribute("user");
+        if (Objects.isNull(user1)) {
+            return "redirect:/user/tologin";
+
+        }
         resume.setUserId(user1.getUserId());
         if (resumePhoto1.getSize() != 0) {
             String newFileName = uploadFile(request, resumePhoto1);

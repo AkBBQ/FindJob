@@ -244,7 +244,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label">生日</label>
-                                    <input type="text" class="form-control" placeholder="请填写生日" name="userBirth" id="show_date2" value="${user.userBirth}">
+                                    <input type="date" class="form-control" placeholder="请填写生日" name="userBirth" id="show_date2" value="${user.userBirth}">
                                 </div>
                             </div>
                         </div>

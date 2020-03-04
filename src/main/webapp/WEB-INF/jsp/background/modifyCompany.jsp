@@ -37,7 +37,7 @@
           <label>公司图片：</label>
         </div>
         <div class="field">
-        <img alt="图片" src="${company.companyPhoto}">
+        <img alt="图片" width="50px" height="50px" src="${company.companyPhoto}">
           <input type="file" id="url1" name="companyPhoto1" class="input tips" style="width:25%; float:left;"
            data-toggle="hover" data-place="right" data-image="${company.companyPhoto}"  value="${company.companyPhoto}"/>
           <div iclass="tipss"></div>
@@ -140,7 +140,31 @@
           <div class="tips" id="tip5"></div>
         </div>    
       </div>
-      <div class="form-group">
+
+        <div class="form-group">
+            <div class="label">
+                <label>招聘者姓名：</label>
+            </div>
+            <div class="field">
+                <fm:input path="releaseName" id="dp2" class="InputStyle" value="${company.releaseName}"/>
+                <div class="tips" id="tip5"></div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="label">
+                <label>招聘者职位：</label>
+            </div>
+            <div class="field">
+                <fm:input path="releasePosition" id="dp3" class="InputStyle" value="${company.releasePosition}"/>
+                <div class="tips" id="tip6"></div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
         <div class="label">
           <label></label>
         </div>

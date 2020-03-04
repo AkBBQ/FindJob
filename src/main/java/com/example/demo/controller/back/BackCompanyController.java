@@ -59,6 +59,17 @@ public class BackCompanyController {
                 model.addAttribute("message", "该账号已经被注册过！");
                 return "/toRegister";
             }
+            List<String> photos = new ArrayList<>();
+            photos.add("https://img.bosszhipin.com/beijin/mcs/useravatar/20190506/b2f37e35384306681bd28cb1c2572ae5aac4aae85cde64e9a5f5a9ff822d87ab_s.png?x-oss-process=image/resize,w_60,limit_0");
+            photos.add("https://img.bosszhipin.com/boss/avatar/avatar_12.png?x-oss-process=image/resize,w_60,limit_0");
+            photos.add("https://img.bosszhipin.com/boss/avatar/avatar_5.png?x-oss-process=image/resize,w_60,limit_0");
+            photos.add("https://img.bosszhipin.com/beijin/mcs/chatphoto/20191014/57d67a777955a723df390dcee98fd29d503404c57dd34980e0966cacf6deb5b9_s.jpg?x-oss-process=image/resize,w_120,limit_0");
+            photos.add("https://img.bosszhipin.com/beijin/mcs/useravatar/20190716/a8cdf0b14b39107569a6dfcb3f0f8cd7cfcd208495d565ef66e7dff9f98764da_s.jpg");
+            photos.add("https://img.bosszhipin.com/beijin/mcs/chatphoto/20190516/e9f2424606108522ab9341d6cd8905ea39c34ca7887b61bc4ba563082410a58d_s.jpg?x-oss-process=image/resize,w_120,limit_0");
+            photos.add("https://img.bosszhipin.com/beijin/mcs/useravatar/20190506/b2f37e35384306681bd28cb1c2572ae5aac4aae85cde64e9a5f5a9ff822d87ab_s.png?x-oss-process=image/resize,w_60,limit_0");
+            //随机给招聘者一个默认头像
+            int b=(int)(Math.random()*6);
+            company.setReleasePhoto(photos.get(b));
             companyManger.addCompany(company);
             return "redirect:/backUser/toBackLogin";
         } catch (Exception e) {
@@ -126,7 +137,7 @@ public class BackCompanyController {
     @RequestMapping("/doModifyCompany")
     public String doModifyBook(Company company,
                                @RequestParam("companyPhoto1") MultipartFile file,
-                               HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
+                               HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
         if (!file.isEmpty()) {
             String path = request.getRealPath("/resource/uploads/") + File.separator
@@ -137,18 +148,17 @@ public class BackCompanyController {
                 Random random = new Random();
                 file.transferTo(newFile);
                 //截取掉根路径
-                path=path.substring(path.lastIndexOf("/resource"));
+                path = path.substring(path.lastIndexOf("/resource"));
 
                 company.setCompanyPhoto(path);
-                companyService.update(company);
-                model.addAttribute("companyName", company.getCompanyName());
-                return "forward:/backCompany/companyList";
+
             } else {
-                request.setAttribute("msg", "修改成功");
+                request.setAttribute("msg", "图片格式不符合！");
                 return "forward:/backCompany/companyList";
             }
-        } else {
-            return "forward:/backCompany/companyList";
         }
+        companyService.update(company);
+        model.addAttribute("companyName", company.getCompanyName());
+        return "forward:/backCompany/companyList";
     }
 }

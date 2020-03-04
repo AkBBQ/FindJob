@@ -80,6 +80,7 @@ public class CompanySqlBuilder {
                         "companyPhoto=#{entity.companyPhoto},companyIntro=#{entity.companyIntro}," +
                         "startTime=#{entity.startTime},registerPrice=#{entity.registerPrice}," +
                         "companyInfo=#{entity.companyInfo},finance=#{entity.finance}," +
+                        "releaseName=#{entity.releaseName},releasePosition=#{entity.releasePosition}," +
                         "companyType=#{entity.companyType}" );
                 WHERE("companyId=#{entity.companyId}");
             }

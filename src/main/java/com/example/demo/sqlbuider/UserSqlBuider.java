@@ -79,7 +79,7 @@ public class UserSqlBuider {
                 SET("userName=#{entity.userName},userTel=#{entity.userTel}," +
                         "userAge=#{entity.userAge},userEdu=#{entity.userEdu}," +
                         "userBirth=#{entity.userBirth},userWorkDate=#{entity.userWorkDate}," +
-                        "userEmail=#{entity.userEmail},userPhoto=#{entity.userPhoto},userSex=#{entity.userSex}");
+                        "userEmail=#{entity.userEmail},userPhoto=#{entity.userPhoto},resumeId=#{entity.resumeId},userSex=#{entity.userSex}");
                 WHERE("userId=#{entity.userId}");
             }
         }.toString();
