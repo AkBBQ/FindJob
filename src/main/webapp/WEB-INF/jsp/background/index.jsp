@@ -35,7 +35,7 @@
   <h2><span class="icon-pencil-square-o"></span>公司信息</h2>
   <ul>
     <li><a href="${pageContext.request.contextPath}/backCompany/companyList" target="right"><span class="icon-caret-right"></span>公司管理</a></li>
-  </ul>  
+  </ul>
   <h2><span class="icon-pencil-square-o"></span>简历管理</h2>
   <ul>
     <li><a href="${pageContext.request.contextPath}/resume/resumeList" target="right"><span class="icon-caret-right"></span>简历列表</a></li>

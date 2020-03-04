@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fm" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -238,11 +240,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="control-label">开始工作时间</label>
-                                    <input type="text" class="form-control" placeholder="请填写开始工作时间" name="userWorkDate" value="${user.userWorkDate}">
+                                    <input type="date" class="form-control" placeholder="请填写开始工作时间" id="show_date" name="userWorkDate" value="${user.userWorkDate}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label">生日</label>
-                                    <input type="text" class="form-control" placeholder="请填写生日" name="userBirth" value="${user.userBirth}">
+                                    <input type="text" class="form-control" placeholder="请填写生日" name="userBirth" id="show_date2" value="${user.userBirth}">
                                 </div>
                             </div>
                         </div>
@@ -463,5 +465,16 @@
     #imghead1 {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
 
 </style>
+
+<script>
+    $(function(){
+        var time = new Date()
+        var day = ('0' + time.getDate()).slice(-2)
+        var month = ('0' + (time.getMonth() + 1)).slice(-2)
+        var today = time.getFullYear() + '-' + month + '-' + day
+        $('#show_date').val(today)
+        $('#show_date2').val(today)
+    })
+</script>
 
 </html>

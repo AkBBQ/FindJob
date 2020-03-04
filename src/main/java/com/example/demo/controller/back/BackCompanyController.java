@@ -151,12 +151,4 @@ public class BackCompanyController {
             return "forward:/backCompany/companyList";
         }
     }
-
-
-    public static void main(String[] args) {
-        String path = "forward:/backCompany/companyList";
-        String substring = path.substring(path.lastIndexOf("/back"));
-        System.out.println(substring);
-
-    }
 }
