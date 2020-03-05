@@ -11,7 +11,7 @@ public class CompanySqlBuilder {
     private static final String TABLE = "company";
 
     public String showCompany(){
-        String sql = "select * from "+TABLE+" LIMIT 0,12 ";
+        String sql = "select * from "+TABLE+" where status = 0 LIMIT 0,12 ";
         return sql;
     }
 
