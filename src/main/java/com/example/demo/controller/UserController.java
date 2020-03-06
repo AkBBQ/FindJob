@@ -1,14 +1,19 @@
 package com.example.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.Manger.FavoriteManger;
 import com.example.demo.entity.*;
 import com.example.demo.entity.dto.PositionDTO;
 import com.example.demo.entity.dto.UserDTO;
+import com.example.demo.entity.redis.RedisCompanyDTO;
+import com.example.demo.entity.redis.RedisPositionDTO;
 import com.example.demo.service.*;
+import com.example.demo.service.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,10 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 用户Controller中心
@@ -49,6 +51,9 @@ public class UserController {
 
     @Autowired
     private DeliverService deliverService;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 跳转登陆页面
@@ -131,10 +136,39 @@ public class UserController {
      */
     @RequestMapping("/index")
     public String index(Model model) {
-        //最新发布的9个职业
-        List<PositionDTO> positionDTOList = positionService.FindTopPosition();
         //展示十二家公司
-        List<Company> companyList = companyService.showCompany();
+        List<Company> companyList = new ArrayList<>();
+        //最新发布的9个职业
+        List<PositionDTO> positionDTOList = new ArrayList<>();
+
+
+        //先根据key去查一下是否有缓存 有就用缓存 无则 查看
+        String company = redisService.getString("companyList");
+        if(StringUtils.isEmpty(company)){
+            companyList = companyService.showCompany();
+
+            //写入redis 过期一小时
+            RedisCompanyDTO redisCompanyDTO = new RedisCompanyDTO();
+            redisCompanyDTO.setCompanyList(companyList);
+            redisService.setNX("companyList", JSON.toJSONString(redisCompanyDTO),3600);
+        }else {
+            RedisCompanyDTO redisCompanyDTO = JSON.parseObject(company, RedisCompanyDTO.class);
+            companyList = redisCompanyDTO.getCompanyList();
+        }
+
+        String position = redisService.getString("positionList");
+
+        if(StringUtils.isEmpty(position)){
+            positionDTOList = positionService.FindTopPosition();
+            //写入redis 过期一小时
+            RedisPositionDTO redisPositionDTO = new RedisPositionDTO();
+            redisPositionDTO.setPositionList(positionDTOList);
+            redisService.setNX("positionList",JSON.toJSONString(redisPositionDTO),3600);
+        }else {
+            RedisPositionDTO redisPositionDTO = JSON.parseObject(position, RedisPositionDTO.class);
+            positionDTOList = redisPositionDTO.getPositionList();
+        }
+
         model.addAttribute("companyList", companyList);
         model.addAttribute("positionDTOList", positionDTOList);
 
