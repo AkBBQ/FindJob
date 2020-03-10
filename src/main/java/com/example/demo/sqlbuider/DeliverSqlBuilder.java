@@ -29,15 +29,6 @@ public class DeliverSqlBuilder {
         return sql;
     }
 
-    public String getById(int deliverId){
-
-        String WHERE = " where user.userId = deliver.userId and deliver.resumeId = resume.resumeId and deliverId="+deliverId;
-
-        String sql = "select *  from "+TABLE+", user,resume"+WHERE;
-
-        return sql;
-    }
-
     //修改信息
     public String updateDeliver () {
         return new SQL() {

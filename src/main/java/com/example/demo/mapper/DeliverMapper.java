@@ -34,8 +34,13 @@ public interface DeliverMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     List<DeliverDTO> getDeliverList(@Param(value = "startRow")int startRow, @Param(value = "pageSize")int pageSize, @Param(value = "condition")String condition);
 
-    @SelectProvider(type = DeliverSqlBuilder.class ,method = "getById")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
+
+    /**
+     * 根据投递id查询相关信息
+     * @param deliverId
+     * @return
+     */
+    @Select("select *  from deliver,user,resume where user.userId = deliver.userId and deliver.resumeId = resume.resumeId and deliverId=#{deliverId}")
     DeliverDTO getById(@Param(value = "deliverId") int deliverId);
 
     @SelectProvider(type = DeliverSqlBuilder.class ,method = "updateDeliver")
