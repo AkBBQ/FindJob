@@ -53,17 +53,6 @@ public class CompanySqlBuilder {
         return sql;
     }
 
-    //修改密码
-    public String updatePwd () {
-        return new SQL() {
-            {
-                UPDATE(TABLE);
-                SET("companyNum=#{companyNum}");
-                WHERE("companyPwd=#{companyPwd}");
-            }
-        }.toString();
-    }
-
     //查询公司详情
     public String selectByCompanyId (int companyId) {
         String sql = "select * from "+TABLE+" where companyId="+companyId;

@@ -36,6 +36,11 @@ public class DeliverDTO {
     private String resumeTel;
 
     /**
+     * 用户邮箱
+     */
+    private String userEmail;
+
+    /**
      * 投递状态 1,已同意 2 已拒绝 3 已投递
      */
     private int state;

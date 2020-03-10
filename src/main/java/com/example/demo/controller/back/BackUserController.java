@@ -1,6 +1,7 @@
 package com.example.demo.controller.back;
 
 import com.alibaba.fastjson.JSONArray;
+import com.example.demo.Manger.CompanyManger;
 import com.example.demo.entity.Company;
 import com.example.demo.entity.User;
 import com.example.demo.service.CompanyService;
@@ -27,6 +28,9 @@ public class BackUserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CompanyManger companyManger;
 
 
     /**
@@ -104,8 +108,8 @@ public class BackUserController {
     @ResponseBody
     public Object updatePwd(String upassword, HttpSession session){
         Company com = (Company)session.getAttribute("company");
-        companyService.updatePwd(com.getCompanyNum(), upassword);
-
+        com.setCompanyPwd(upassword);
+        companyManger.updateCompany(com);
         HashMap<String,String> maps=new HashMap<String,String>();
         maps.put("result","true");
 

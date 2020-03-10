@@ -1,4 +1,12 @@
 spring:
+  #邮箱服务
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 1446547537@qq.com
+    password: jcqnzrphhobfjbbj
+    default-encoding: UTF-8
+
   #redis连接配置
   redis:
     database: 0

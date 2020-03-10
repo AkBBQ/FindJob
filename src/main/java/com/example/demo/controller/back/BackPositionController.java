@@ -92,7 +92,7 @@ public class BackPositionController {
     }
 
     @RequestMapping("/doUpdatePosition")
-    public String doUpdatePosition(Position position, Model model, HttpSession session) {
+    public String doUpdatePosition(Position position, HttpSession session) {
         Company company = (Company) session.getAttribute("company");
         position.setCompanyId(company.getCompanyId());
         System.out.println(position.getCompanyId());
@@ -101,7 +101,7 @@ public class BackPositionController {
     }
 
     @RequestMapping("/doDeletePosition")
-    public String doDeleteBook(Model model, String positionId, String currentPage) {
+    public String doDeleteBook(String positionId) {
         int id = Integer.parseInt(positionId);
         positionService.deletePosition(id);
         return "forward:/backPosition/positionList";

@@ -2,12 +2,17 @@ package com.example.demo.controller.back;
 
 import com.alibaba.fastjson.JSONArray;
 import com.example.demo.Manger.DeliverManger;
-import com.example.demo.entity.*;
+import com.example.demo.entity.Deliver;
+import com.example.demo.entity.Position;
+import com.example.demo.entity.Resume;
+import com.example.demo.entity.User;
 import com.example.demo.entity.dto.DeliverDTO;
 import com.example.demo.entity.dto.PositionDTO;
+import com.example.demo.entity.mail.MessageCommand;
 import com.example.demo.service.DeliverService;
 import com.example.demo.service.PositionService;
 import com.example.demo.service.ResumeService;
+import com.example.demo.service.mail.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +23,8 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 @RequestMapping("/backDeliver")
 @Controller
@@ -34,6 +41,9 @@ public class BackDeliverController {
 
     @Autowired
     private DeliverManger deliverManger;
+
+    @Autowired
+    private MailService mailService;
 
     @RequestMapping("addDeliver")
     @ResponseBody
@@ -64,15 +74,46 @@ public class BackDeliverController {
         return JSONArray.toJSONString(maps);
     }
 
+    /**
+     * 同意(拒绝)简历
+     * @param deliverId
+     * @param state
+     * @return
+     */
     @RequestMapping("updateDeliver")
     @ResponseBody
-    public Object updateDeliver(String deliverId, HttpSession session, String state){
-        int id=Integer.parseInt(deliverId);
+    public Object updateDeliver(String deliverId, String state) {
+        int id = Integer.parseInt(deliverId);
         int stateId = Integer.parseInt(state);
-        String msg="";
+
+
+        MessageCommand messageCommand = MessageCommand.builder().build();
+        messageCommand.setSendAccount("1446547537@qq.com");
+
+        DeliverDTO dto = deliverService.getById(id);
+        String[] receivers = new String[1];
+        if (Objects.nonNull(dto)) {
+            receivers[0] = dto.getUserEmail();
+        } else {
+            receivers[0] = "1362690157@qq.com";
+        }
+        messageCommand.setRecieveAccount(receivers);
+        if (1 == stateId) {
+            //同意简历
+            messageCommand.setTopic("恭喜 您的简历已经通过!");
+            messageCommand.setTxt("请等待我司HR与您联系");
+        } else {
+            //拒绝简历
+            messageCommand.setTopic("抱歉");
+            messageCommand.setTxt("您的简历未通过,请继续保持努力");
+        }
+        //异步发送邮件通知
+        CompletableFuture.runAsync(() -> mailService.sendResultToJobSeeker(messageCommand));
+
+        String msg = "";
         deliverService.updateDeliver(id, stateId);
-        msg="true";
-        HashMap<String,String> maps=new HashMap<String, String>();
+        msg = "true";
+        HashMap<String, String> maps = new HashMap<String, String>();
         maps.put("result", msg);
         return JSONArray.toJSONString(maps);
     }

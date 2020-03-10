@@ -1,6 +1,7 @@
 package com.example.demo.Manger.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.demo.Manger.CompanyManger;
 import com.example.demo.entity.Company;
 import com.example.demo.mapper.MpMapper.MpCompanyMapper;
@@ -36,5 +37,12 @@ public class CompanyMangerImpl implements CompanyManger {
             log.error("新增公司失败",e);
         }
 
+    }
+
+    @Override
+    public void updateCompany(Company company) {
+        UpdateWrapper<Company> wrapper = new UpdateWrapper<>();
+        wrapper.eq("companyId",company.getCompanyId());
+        mpCompanyMapper.update(company,wrapper);
     }
 }

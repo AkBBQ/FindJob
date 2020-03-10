@@ -22,6 +22,9 @@ public interface CompanyManger {
      */
     void addCompany(Company company);
 
-
+    /**
+     * 更新公司
+     */
+    void updateCompany(Company company);
 
 }

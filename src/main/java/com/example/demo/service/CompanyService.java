@@ -8,8 +8,6 @@ public interface CompanyService {
 
     List<Company> showCompany();
 
-    List<Company> queryAll();
-
     int getPageCount(String query);
 
     List<Company> getCompanyList(int startRow, int pageSize,  String query);
@@ -17,8 +15,6 @@ public interface CompanyService {
     List<Company> selectByContion(String condition);
 
     Company backLogin(String companyNum, String companyPwd);
-
-    void updatePwd(String companyNum, String companyPwd);
 
     Company queryByCompanyId(int id);
 

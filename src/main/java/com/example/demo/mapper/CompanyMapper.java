@@ -36,10 +36,6 @@ public interface CompanyMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     Company queryByCompanyNum(@Param(value = "companyNum")String companyNum, @Param(value = "companyPwd")String companyPwd);
 
-    @SelectProvider(type = CompanySqlBuilder.class ,method = "updatePwd")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    void updatePwd(@Param(value = "companyNum")String companyNum, @Param(value = "companyPwd")String companyPwd);
-
     @SelectProvider(type = CompanySqlBuilder.class ,method = "selectByCompanyId")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     Company selectByCompanyId(@Param(value = "companyId")int companyId);

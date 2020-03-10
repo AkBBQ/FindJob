@@ -20,11 +20,6 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> queryAll() {
-        return companyMapper.queryAll();
-    }
-
-    @Override
     public int getPageCount(String query) {
         return companyMapper.getPageCount(query);
     }
@@ -42,11 +37,6 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company backLogin(String companyNum, String companyPwd) {
         return companyMapper.queryByCompanyNum(companyNum, companyPwd);
-    }
-
-    @Override
-    public void updatePwd(String companyNum, String companyPwd) {
-         companyMapper.updatePwd(companyNum, companyPwd);
     }
 
     @Override
