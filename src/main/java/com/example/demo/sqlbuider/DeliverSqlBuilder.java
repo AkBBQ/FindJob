@@ -8,26 +8,6 @@ public class DeliverSqlBuilder {
 
     private static final String TABLE = "deliver";
 
-
-    //增加信息
-    public String addDeliver () {
-        return new SQL() {
-            {
-                INSERT_INTO(TABLE);
-                VALUES("userId", "#{entity.userId}");
-                VALUES("positionId", "#{entity.positionId}");
-                VALUES("companyId", "#{entity.companyId}");
-                VALUES("resumeId", "#{entity.resumeId}");
-            }
-        }.toString();
-    }
-
-    //查询详情
-    public String selectByPositionId (int positionId, int userId) {
-        String sql = "select * from "+TABLE+" where positionId="+positionId+" and userId="+userId;
-        return sql;
-    }
-
     public String getPageCount(Map<String,Object> map){
         String conditions = (String) map.get("condition");
 

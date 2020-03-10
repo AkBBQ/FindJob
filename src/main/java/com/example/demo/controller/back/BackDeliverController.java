@@ -45,6 +45,13 @@ public class BackDeliverController {
     @Autowired
     private MailService mailService;
 
+    /**
+     * 投递简历
+     * @param positionId
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping("addDeliver")
     @ResponseBody
     public Object addDeliver(String positionId, HttpSession session, Model model){

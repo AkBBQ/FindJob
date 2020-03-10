@@ -3,23 +3,28 @@ package com.example.demo.mapper;
 import com.example.demo.entity.Deliver;
 import com.example.demo.entity.dto.DeliverDTO;
 import com.example.demo.sqlbuider.DeliverSqlBuilder;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface DeliverMapper {
 
-    @SelectProvider(type = DeliverSqlBuilder.class ,method = "addDeliver")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    void addDeliver(@Param(value = "entity") Deliver deliver);
+    /**
+     * 投递简历
+     * @param deliver
+     */
+    @Insert("INSERT into deliver(userId,positionId,companyId,resumeId) values(#{userId},#{positionId},#{companyId},#{resumeId})")
+    void addDeliver(Deliver deliver);
 
-    @SelectProvider(type = DeliverSqlBuilder.class ,method = "selectByPositionId")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    List<Deliver> selectByPositionId(@Param(value = "positionId") int positionId, @Param(value = "userId")int userId);
+    /**
+     * 查询用户的投递详情
+     * @param positionId
+     * @param userId
+     * @return
+     */
+    @Select("select * from deliver where positionId=#{positionId} and userId =#{userId}")
+    List<Deliver> selectByPositionId(int positionId, int userId);
 
     @SelectProvider(type = DeliverSqlBuilder.class ,method = "getPageCount")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
