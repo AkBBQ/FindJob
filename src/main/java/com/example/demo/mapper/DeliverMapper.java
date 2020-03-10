@@ -24,7 +24,7 @@ public interface DeliverMapper {
      * @return
      */
     @Select("select * from deliver where positionId=#{positionId} and userId =#{userId}")
-    List<Deliver> selectByPositionId(int positionId, int userId);
+    List<Deliver> selectByPositionId(@Param(value = "positionId") int positionId, @Param(value = "userId") int userId);
 
     @SelectProvider(type = DeliverSqlBuilder.class ,method = "getPageCount")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
