@@ -17,9 +17,13 @@ public interface ResumeMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     List<Resume> getResumeList(@Param(value = "startRow")int startRow, @Param(value = "pageSize")int pageSize, @Param(value = "query") String query);
 
-    @SelectProvider(type = ResumeSqlBuilder.class ,method = "queryByResumeId")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    Resume queryByResumeId(@Param(value = "resumeId") int id);
+    /**
+     * 根据简历id查找简历
+     * @param resumeId
+     * @return
+     */
+    @Select("select * from resume where resumeId= #{resumeId}")
+    Resume queryByResumeId(@Param(value = "resumeId") int resumeId);
 
     /**
      * 根据用户ID查找用户简历

@@ -30,11 +30,6 @@ public class ResumeSqlBuilder {
 
         return sql;
     }
-    //查询详情
-    public String queryByResumeId (int resumeId) {
-        String sql = "select * from "+TABLE+" where resumeId="+resumeId;
-        return sql;
-    }
 
     //增加信息
     public String addResume () {

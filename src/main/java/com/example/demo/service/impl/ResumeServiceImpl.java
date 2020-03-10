@@ -25,8 +25,8 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume queryByResumeId(int id) {
-        return resumeMapper.queryByResumeId(id);
+    public Resume queryByResumeId(int resumeId) {
+        return resumeMapper.queryByResumeId(resumeId);
     }
 
     @Override

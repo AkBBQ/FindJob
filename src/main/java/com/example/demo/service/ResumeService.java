@@ -10,7 +10,7 @@ public interface ResumeService {
 
     List<Resume> getResumeList(int startRow, int pageSize, String condition);
 
-    Resume queryByResumeId(int id);
+    Resume queryByResumeId(int resumeId);
 
     Resume queryByUserId(int userId);
 
