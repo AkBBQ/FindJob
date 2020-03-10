@@ -10,17 +10,6 @@ public class CompanySqlBuilder {
 
     private static final String TABLE = "company";
 
-    public String showCompany(){
-        String sql = "select * from "+TABLE+" where status = 0 LIMIT 0,12 ";
-        return sql;
-    }
-
-
-    public String queryAll(){
-        String sql = "select * from "+TABLE+" where status=0";
-        return sql;
-    }
-
     public String getPageCount(Map<String,Object> map){
         String conditions = (String) map.get("query");
 
@@ -50,12 +39,6 @@ public class CompanySqlBuilder {
 
     public String selectByCompanyNum(Map<String,Object> map){
         String sql = "select * from "+TABLE+" where companyNum='"+map.get("companyNum")+"' and companyPwd='"+map.get("companyPwd")+"'";
-        return sql;
-    }
-
-    //查询公司详情
-    public String selectByCompanyId (int companyId) {
-        String sql = "select * from "+TABLE+" where companyId="+companyId;
         return sql;
     }
 
