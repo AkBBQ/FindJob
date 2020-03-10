@@ -2,23 +2,18 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.Company;
 import com.example.demo.sqlbuider.CompanySqlBuilder;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface CompanyMapper {
-
-    @SelectProvider(type = CompanySqlBuilder.class ,method = "showCompany")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
+    /**
+     * 查询前十二家公司
+     * @return
+     */
+    @Select("select * from company where status = 0 LIMIT 0,12")
     List<Company> showCompany();
-
-    @SelectProvider(type = CompanySqlBuilder.class ,method = "queryAll")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    List<Company> queryAll();
 
     @SelectProvider(type = CompanySqlBuilder.class ,method = "getPageCount")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
@@ -36,8 +31,13 @@ public interface CompanyMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     Company queryByCompanyNum(@Param(value = "companyNum")String companyNum, @Param(value = "companyPwd")String companyPwd);
 
-    @SelectProvider(type = CompanySqlBuilder.class ,method = "selectByCompanyId")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
+
+    /**
+     * 根据公司id查看公司信息
+     * @param companyId
+     * @return
+     */
+    @Select("select * from company where companyId=#{companyId}")
     Company selectByCompanyId(@Param(value = "companyId")int companyId);
 
     @SelectProvider(type = CompanySqlBuilder.class ,method = "update")
