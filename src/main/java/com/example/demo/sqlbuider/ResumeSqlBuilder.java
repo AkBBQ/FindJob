@@ -36,12 +36,6 @@ public class ResumeSqlBuilder {
         return sql;
     }
 
-    //查询详情
-    public String queryByUserId (int userId) {
-        String sql = "select * from "+TABLE+" where userId="+userId;
-        return sql;
-    }
-
     //增加信息
     public String addResume () {
         return new SQL() {

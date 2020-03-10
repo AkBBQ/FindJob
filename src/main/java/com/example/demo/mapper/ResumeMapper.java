@@ -2,10 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.Resume;
 import com.example.demo.sqlbuider.ResumeSqlBuilder;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -24,9 +21,13 @@ public interface ResumeMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     Resume queryByResumeId(@Param(value = "resumeId") int id);
 
-    @SelectProvider(type = ResumeSqlBuilder.class ,method = "queryByUserId")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    Resume queryByUserId(@Param(value = "userId") int userId);
+    /**
+     * 根据用户ID查找用户简历
+     * @param userId
+     * @return
+     */
+    @Select("select * from resume where userId = #{userId}")
+    Resume queryByUserId(int userId);
 
     @SelectProvider(type = ResumeSqlBuilder.class ,method = "addResume")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
