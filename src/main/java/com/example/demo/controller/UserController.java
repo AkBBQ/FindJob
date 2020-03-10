@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.Manger.DeliverManger;
 import com.example.demo.Manger.FavoriteManger;
 import com.example.demo.entity.*;
 import com.example.demo.entity.dto.PositionDTO;
@@ -50,10 +51,10 @@ public class UserController {
     private FavoriteManger favoriteManger;
 
     @Autowired
-    private DeliverService deliverService;
+    private RedisService redisService;
 
     @Autowired
-    private RedisService redisService;
+    private DeliverManger deliverManger;
 
     /**
      * 跳转登陆页面
@@ -213,7 +214,9 @@ public class UserController {
             } else {
                 userDTO.setMyFavourites(0);
             }
-            List<Deliver> delivers = deliverService.queryUserDeliverHistory(user.getUserId());
+            Deliver deliver = new Deliver();
+            deliver.setUserId(user.getUserId());
+            List<Deliver> delivers = deliverManger.queryUserDeliverHistory(deliver);
             if (!CollectionUtils.isEmpty(delivers)) {
                 userDTO.setDelivers(delivers.size());
             } else {

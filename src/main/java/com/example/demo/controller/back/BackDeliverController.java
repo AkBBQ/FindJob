@@ -1,6 +1,7 @@
 package com.example.demo.controller.back;
 
 import com.alibaba.fastjson.JSONArray;
+import com.example.demo.Manger.DeliverManger;
 import com.example.demo.entity.*;
 import com.example.demo.entity.dto.DeliverDTO;
 import com.example.demo.entity.dto.PositionDTO;
@@ -30,6 +31,9 @@ public class BackDeliverController {
 
     @Autowired
     private ResumeService resumeService;
+
+    @Autowired
+    private DeliverManger deliverManger;
 
     @RequestMapping("addDeliver")
     @ResponseBody
@@ -76,7 +80,9 @@ public class BackDeliverController {
     @RequestMapping("deliverHistory")
     public Object updateDeliver(HttpSession session, Model model){
         User user = (User)session.getAttribute("user");
-        List<Deliver> delivers = deliverService.queryUserDeliverHistory(user.getUserId());
+        Deliver deliver = new Deliver();
+        deliver.setUserId(user.getUserId());
+        List<Deliver> delivers = deliverManger.queryUserDeliverHistory(deliver);
         List<DeliverDTO> deliverDTOS = new ArrayList<>();
         delivers.forEach(item->{
             DeliverDTO dto = new DeliverDTO();

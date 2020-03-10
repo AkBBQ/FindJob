@@ -18,11 +18,6 @@ public interface DeliverService {
     List<Deliver> queryByPositionId(int positionId, int userId);
 
     /**
-     *  查看用户投递记录
-     */
-    List<Deliver> queryUserDeliverHistory(int userId);
-
-    /**
      * 页数统计
      */
     int getPageCount(String condition);

@@ -21,11 +21,6 @@ public interface DeliverMapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     List<Deliver> selectByPositionId(@Param(value = "positionId") int positionId, @Param(value = "userId")int userId);
 
-
-    @SelectProvider(type = DeliverSqlBuilder.class ,method = "selectUserDeliverHistory")
-    @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
-    List<Deliver> selectUserDeliverHistory(@Param(value = "userId")int userId);
-
     @SelectProvider(type = DeliverSqlBuilder.class ,method = "getPageCount")
     @Options(flushCache = Options.FlushCachePolicy.FALSE, timeout = 10000)
     int getPageCount(@Param(value = "condition") String condition);
