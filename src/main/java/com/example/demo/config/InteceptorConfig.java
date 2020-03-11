@@ -53,8 +53,7 @@ public class InteceptorConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-        registry.addResourceHandler("/webapp").addResourceLocations("classpath:/assets/")
+        registry.addResourceHandler("/*/assets").addResourceLocations("webapp/assets/")
                 .addResourceLocations("classpath:/backStyle/")
                 .addResourceLocations("classpath:/calendar/")
                 .addResourceLocations("classpath:/css/")
