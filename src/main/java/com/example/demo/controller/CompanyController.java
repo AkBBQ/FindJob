@@ -33,6 +33,7 @@ public class CompanyController {
            map.put("companyType",type);
        }
 
+       //移除空的数据
        MapRemoveNullUtil.removeNullEntry(map);
        Iterator it = map.entrySet().iterator();
         while (it.hasNext()) {
